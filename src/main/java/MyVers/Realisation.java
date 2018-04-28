@@ -6,27 +6,31 @@
 package MyVers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
 
 /**
- * Этот класс будет наследоваться от TemplateAlgorithm и будет применен паттерн "Template(Шаблон)"
+ * Этот класс будет наследоваться от TemplateAlgorithm и будет применен паттерн
+ * "Template(Шаблон)"
+ *
  * @author Влад
- * @version 0.02
- * New:
- *     - добавлен метод выбора следующего города(в стадии разработки ещё)
- *     - выбран паттерн Шаблон для реализации в этом файле
+ * @version 0.03 New: 
+ *                   - добавлена зависимость выбора вероятностей от условия посещен город или нет
+ *                   - 
  */
 public class Realisation {
 
     public static final int ALPHA = 1;//жадность, где 0 - выбор где поближе
     public static final int BETA = 1;//если = 0, то игнорируем расстояние
-    int[][] roadLength = {{0, 38, 74, 59, 45},
+    int[][] roadLength = {
+    {0, 38, 74, 59, 45},
     {38, 0, 46, 61, 72},
     {74, 46, 0, 49, 85},
     {59, 61, 49, 0, 42},
     {45, 72, 85, 42, 0}};
-    int[][] roadPheromone = {{0, 3, 2, 2, 2},
+    int[][] roadPheromone = {
+    {0, 3, 2, 2, 2},
     {3, 0, 1, 1, 1},
     {2, 1, 0, 2, 2},
     {2, 1, 2, 0, 1},
@@ -39,28 +43,40 @@ public class Realisation {
     static double[][] probabilities = new double[CITIES][CITIES];
 
     /**
-    *
-    * 1) Сделать поиск вероятностей только для одного города(текущего)
-    * 2) Реализовать выбор города из вероятностей
-    * 3) Реализовать проверку города, посетил ли муравей его, держать массив для каждого муравья
+     *
+     * 1) Сделать поиск вероятностей только для одного города(текущего)(DONE)
+     * 2) Реализовать выбор города из вероятностей 
+     * 3) Реализовать проверку города, посетил ли муравей его, 
+     *    держать массив для каждого муравья (HALF DONE)
      */
-    public void start() {
-        visitedCities[0] = true;
-        getProbabilityForCity(0);
+    
+    /**
+     * Initializing array of visited cities. Default with false
+     */
+    public void initialization() {
+        for (int i = 0; i < visitedCities.length; i++) {
+            visitedCities[i] = false;
+        }
     }
+
     /**
      * Метод расчитывает вероятность попасть в каждый из городов
-     * @param city текущий город
-     * ДОДЕЛАТЬ: опять же зависимость от List-а посещенных городов(булевский)
+     *
+     * @param currentCity текущий город ДОДЕЛАТЬ: опять же зависимость от List-а
+     * посещенных городов(булевский)
      */
-    public void getProbabilityForCity(int city) {
+    public void getProbabilityForCity(int currentCity) {
 //        for (int i = 0; i < CITIES; i++) {
+        visitedCities[currentCity] = true;//?IDK
+
         for (int j = 0; j < CITIES; j++) {
-            if (city != j) {
-                probabilities[city][j] = 100 * ((Math.pow(roadPheromone[city][j], ALPHA) / (Math.pow(roadLength[city][j], BETA)))
-                        / (sumProbability[city]));
+            if (visitedCities[j] == false) {
+                probabilities[currentCity][j] = 100 * ((Math.pow(roadPheromone[currentCity][j], ALPHA) / (Math.pow(roadLength[currentCity][j], BETA)))
+                        / (sumProbability[currentCity]));
+            } else {
+                probabilities[currentCity][j] = 0;
             }
-            System.out.print(probabilities[city][j] + " ");
+            System.out.print(probabilities[currentCity][j] + " ");
         }
         System.out.println("");
     }
@@ -69,9 +85,9 @@ public class Realisation {
      * Выбирается следующий город для посещения
      *
      * @param currentCity текущий город, отсчет с нуля
-     * @return возвращает номер города, отсчет с нуля ДОДЕЛАТЬ: динамическое
-     * количество городов, которое зависит от посещенных городов т.е. сделать
-     * List булевский с городами, и тут его заюзать!
+     * @return возвращает номер города, отсчет с нуля 
+     * ДОДЕЛАТЬ: 
+     * зависимость от посещенных городов
      */
     public int chooseCity(int currentCity) {
         ArrayList<Double> listOfProbs = new ArrayList<>();
@@ -108,19 +124,21 @@ public class Realisation {
 
 //    }
     /**
-     * Обновляет суммы вероятностей перехода в каждый город Использовать после
-     * обновления феромонов
+     * Updating sums of probabilities to go to another unvisited city
+     * Use after updating pheromones
      */
-    public void updateSumProbability() {
-
+    public void updateSumProbability(int city) {
+        visitedCities[city] = true;//FOR EXAMPLE
+        
+        System.out.println("Visited cities: " + Arrays.toString(visitedCities));
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                if (i != j) {
-                    sumProbability[i] = sumProbability[i] + Math.pow(roadPheromone[i][j], ALPHA) / Math.pow(roadLength[i][j], BETA);
-                }
+                if (visitedCities[j] != true) {
+                    sumProbability[i] = sumProbability[i] + (Math.pow(roadPheromone[i][j], ALPHA) / Math.pow(roadLength[i][j], BETA));
+                } 
             }
             for (i = 0; i < CITIES; i++) {
-                System.out.println(sumProbability[i]);
+                System.out.println("Summary probabilities to visit " + i + " city: " + sumProbability[i]);
             }
         }
     }
@@ -128,10 +146,11 @@ public class Realisation {
     public static void main(String[] args) {
 
         Realisation mv = new Realisation();
-        mv.updateSumProbability();
+        mv.initialization();
+        mv.updateSumProbability(0);
         mv.getProbabilityForCity(0);
-        int whatDatCity = mv.chooseCity(0);
-        System.out.println("THE CITY IS: " + (whatDatCity));
+        //int whatDatCity = mv.chooseCity(0);
+        //System.out.println("THE CITY IS: " + (whatDatCity));
 
     }
 }
