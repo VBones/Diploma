@@ -15,9 +15,8 @@ import java.util.Random;
  * "Template(Шаблон)"
  *
  * @author Влад
- * @version 0.03 New: 
- *                   - добавлена зависимость выбора вероятностей от условия посещен город или нет
- *                   - 
+ * @version 0.04 New: 
+ *                   - настроен метод chooseCity
  */
 public class Realisation {
 
@@ -90,30 +89,39 @@ public class Realisation {
      * зависимость от посещенных городов
      */
     public int chooseCity(int currentCity) {
-        ArrayList<Double> listOfProbs = new ArrayList<>();
+        ArrayList<Double> probabsForChoose = new ArrayList<>();
         for (int i = 0; i < CITIES; i++) {
-            listOfProbs.add(probabilities[currentCity][i]);
+            probabsForChoose.add(probabilities[currentCity][i]);
         }
-        Collections.sort(listOfProbs);
-        //System.out.println(listOfProbs);
+        Collections.sort(probabsForChoose);
+        System.out.println(probabsForChoose);
 
         Random random = new Random();
-        int value = random.nextInt(100);
-        System.out.println("Random value: " + value);
-        double city = Collections.max(listOfProbs);
-        double summer = listOfProbs.get(1);
+        int randomValue = random.nextInt(100);
+        System.out.println("Random value: " + randomValue);
+        double city = Collections.max(probabsForChoose);
+        double ender = probabsForChoose.get(1);
+        System.out.println("first ender : "+ender);
         for (int i = 0; i < CITIES; i++) {
+            //System.out.println("текущий i: "+i);
+            //Если i = последнему, выбираем последний город
+            //System.out.println(probabsForChoose.get(i)+" and "+ender);
             if (i == CITIES - 1) {
-                city = listOfProbs.get(listOfProbs.size() - 1);
+                city = probabsForChoose.get(probabsForChoose.size() - 1);
                 break;
-            } else if (value > listOfProbs.get(i) && value < summer) {
-                city = listOfProbs.get(i + 1);
+            //Если случайное число попадает в отрезок
+            } else if (randomValue > probabsForChoose.get(i) && randomValue < ender) {
+                city = probabsForChoose.get(i + 1);
                 break;
             }
-            summer = summer + listOfProbs.get(i + 1);
+            //Правый край отрезка для сравнения
+            ender = ender + probabsForChoose.get(i + 2);
+            //System.out.println("ENDER: "+ender);
         }
         System.out.println("Value of city: " + city);
         for (int i = 0; i < CITIES; i++) {
+            //Ищем город по вероятности
+            //Если вероятность совпала, выбираем этот город
             if (probabilities[currentCity][i] == city) {
                 return i;
             }
@@ -149,8 +157,8 @@ public class Realisation {
         mv.initialization();
         mv.updateSumProbability(0);
         mv.getProbabilityForCity(0);
-        //int whatDatCity = mv.chooseCity(0);
-        //System.out.println("THE CITY IS: " + (whatDatCity));
+        int whatDatCity = mv.chooseCity(0);
+        System.out.println("THE CITY IS: " + whatDatCity + "[0-"+(CITIES-1)+"]");
 
     }
 }
