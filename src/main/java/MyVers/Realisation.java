@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MyVers;
 
 import java.util.ArrayList;
@@ -13,10 +8,14 @@ import java.util.Random;
 /**
  * Этот класс будет наследоваться от TemplateAlgorithm и будет применен паттерн
  * "Template(Шаблон)"
- *
+ * 
  * @author Влад
- * @version 0.04 New: 
- *                   - настроен метод chooseCity
+ * @version 0.05 New: 
+ *                   - добавлен метод runAlgorithm
+ *                   - добавлен метод hasMoreCitiesToGo
+ *                   - готова первая версия цикла алгоритма(одноразовая)
+ * TO DO: 1) refactoring
+ *        2) обновление феромонов
  */
 public class Realisation {
 
@@ -44,7 +43,7 @@ public class Realisation {
     /**
      *
      * 1) Сделать поиск вероятностей только для одного города(текущего)(DONE)
-     * 2) Реализовать выбор города из вероятностей 
+     * 2) Реализовать выбор города из вероятностей (DONE)
      * 3) Реализовать проверку города, посетил ли муравей его, 
      *    держать массив для каждого муравья (HALF DONE)
      */
@@ -61,8 +60,7 @@ public class Realisation {
     /**
      * Метод расчитывает вероятность попасть в каждый из городов
      *
-     * @param currentCity текущий город ДОДЕЛАТЬ: опять же зависимость от List-а
-     * посещенных городов(булевский)
+     * @param currentCity текущий город 
      */
     public void getProbabilityForCity(int currentCity) {
 //        for (int i = 0; i < CITIES; i++) {
@@ -85,8 +83,6 @@ public class Realisation {
      *
      * @param currentCity текущий город, отсчет с нуля
      * @return возвращает номер города, отсчет с нуля 
-     * ДОДЕЛАТЬ: 
-     * зависимость от посещенных городов
      */
     public int chooseCity(int currentCity) {
         ArrayList<Double> probabsForChoose = new ArrayList<>();
@@ -98,10 +94,10 @@ public class Realisation {
 
         Random random = new Random();
         int randomValue = random.nextInt(100);
-        System.out.println("Random value: " + randomValue);
+        //System.out.println("Random value: " + randomValue);
         double city = Collections.max(probabsForChoose);
         double ender = probabsForChoose.get(1);
-        System.out.println("first ender : "+ender);
+        //System.out.println("first ender : "+ender);
         for (int i = 0; i < CITIES; i++) {
             //System.out.println("текущий i: "+i);
             //Если i = последнему, выбираем последний город
@@ -118,16 +114,17 @@ public class Realisation {
             ender = ender + probabsForChoose.get(i + 2);
             //System.out.println("ENDER: "+ender);
         }
-        System.out.println("Value of city: " + city);
+        //System.out.println("Value of city: " + city);
         for (int i = 0; i < CITIES; i++) {
             //Ищем город по вероятности
             //Если вероятность совпала, выбираем этот город
             if (probabilities[currentCity][i] == city) {
+                visitedCities[i]=true;
                 return i;
             }
         }
 
-        return 0;
+        return 12;
     }
 
 //    }
@@ -135,30 +132,66 @@ public class Realisation {
      * Updating sums of probabilities to go to another unvisited city
      * Use after updating pheromones
      */
-    public void updateSumProbability(int city) {
-        visitedCities[city] = true;//FOR EXAMPLE
+    public void updateSumProbability(int currentCity) {
+        visitedCities[currentCity] = true;//FOR EXAMPLE
         
         System.out.println("Visited cities: " + Arrays.toString(visitedCities));
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
+        for(int k=0;k<5;k++){
+            sumProbability[k]=0;
+        }
+        int i = currentCity;
+        for (int j = 0; j < 5; j++) {
                 if (visitedCities[j] != true) {
                     sumProbability[i] = sumProbability[i] + (Math.pow(roadPheromone[i][j], ALPHA) / Math.pow(roadLength[i][j], BETA));
-                } 
+                }
             }
-            for (i = 0; i < CITIES; i++) {
-                System.out.println("Summary probabilities to visit " + i + " city: " + sumProbability[i]);
-            }
-        }
+        //Для дебага
+//            for (i = 0; i < CITIES; i++) {
+//                System.out.println("Summary probabilities to visit " + i + " city: " + sumProbability[i]);
+//            }
+        
     }
-
-    public static void main(String[] args) {
-
+    /**
+     * Запускает полный цикл алгоритма по поиску города
+     * @param startingCity начальный город
+     */
+    public static void runAlgorithm(int startingCity) {
         Realisation mv = new Realisation();
         mv.initialization();
-        mv.updateSumProbability(0);
-        mv.getProbabilityForCity(0);
-        int whatDatCity = mv.chooseCity(0);
-        System.out.println("THE CITY IS: " + whatDatCity + "[0-"+(CITIES-1)+"]");
+        int i = 0;
+        int selectedCity = startingCity;
+        ArrayList<Integer> travel = new ArrayList<>();
+        travel.add(startingCity + 1);
+        while (hasMoreCitiesToGo()) {
 
+            mv.updateSumProbability(selectedCity);
+            mv.getProbabilityForCity(selectedCity);
+            selectedCity = mv.chooseCity(selectedCity);
+            if (selectedCity == 12) {
+                break;
+            }
+            System.out.println("THE NEXT CITY IS: " + selectedCity + "[0-" + (CITIES - 1) + "]");
+            travel.add(selectedCity + 1);
+            System.out.println("-----------------------------------------------------------------");
+        }
+        System.out.print("THE TRAVEL IS:");
+        for (Integer city : travel) {
+            System.out.print(" -> "+ city);
+        }
+    }
+    /**
+     * Проверяем, остались ли еще непосещенные города
+     * @return true или false
+     */
+    public static boolean hasMoreCitiesToGo() {
+        for (int i = 0; i < visitedCities.length; i++) {
+            if (visitedCities[i] == false) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        runAlgorithm(0);
     }
 }
