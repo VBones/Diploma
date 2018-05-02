@@ -10,17 +10,17 @@ import java.util.Random;
  * "Template(Шаблон)"
  * 
  * @author Влад
- * @version 0.06 New: 
- *                   - добавлен метод для обновления феромонов
- *                   - всякие мелкие вспомогательные методы/поля
- * TO DO: 1) ants
- *        2) search a best way from 100 iterations
- *        3) refactoring
+ * @version 0.07 New: 
+ *                   - настроены значения, проведены тесты, вроде более менее работает
+ *                     50-60% самые короткие пути
+ * TO DO: 1) ants(multi-threading)
+ *        2) refactoring
+ *        3) matrix input from keyboard into command line
  */
 public class Realisation {
 
-    public static final int ALPHA = 1;//жадность, где 0 - выбор где поближе
-    public static final int BETA = 1;//если = 0, то игнорируем расстояние
+    public static final double ALPHA = 1;//жадность, где 0 - выбор где поближе
+    public static final double BETA = 1;//если = 0, то игнорируем расстояние
     public static final double P = 0.2;//коэфициент испарения феромонов
     public static final double Q = 300;//коэфициент для нахождения феромона нового
     static final int CITIES = 5;
@@ -44,8 +44,8 @@ public class Realisation {
     public int lengthOfWay;
     ArrayList<Integer> travel;
     double[] sumProbability = new double[CITIES];
-    static boolean[] visitedCities = new boolean[CITIES];
-    static double[][] probabilities = new double[CITIES][CITIES];
+    boolean[] visitedCities = new boolean[CITIES];
+    double[][] probabilities = new double[CITIES][CITIES];
 
     /**
      *
@@ -82,9 +82,9 @@ public class Realisation {
             } else {
                 probabilities[currentCity][j] = 0;
             }
-            System.out.print(probabilities[currentCity][j] + " ");
+            //System.out.print(probabilities[currentCity][j] + " ");
         }
-        System.out.println("");
+        //System.out.println("");
     }
 
     /**
@@ -120,7 +120,11 @@ public class Realisation {
                 break;
             }
             //Правый край отрезка для сравнения
-            ender = ender + probabsForChoose.get(i + 2);
+            if (i == CITIES - 2) {
+                ender = ender + probabsForChoose.get(probabsForChoose.size() - 1);
+            } else {
+                ender = ender + probabsForChoose.get(i + 2);
+            }
             //System.out.println("ENDER: "+ender);
         }//end for
         //System.out.println("Value of city: " + city);
@@ -139,11 +143,12 @@ public class Realisation {
     /**
      * Updating sums of probabilities to go to another unvisited city
      * Use after updating pheromones
+     * @param currentCity текущий город
      */
     public void updateSumProbability(int currentCity) {
         visitedCities[currentCity] = true;//FOR EXAMPLE
 
-        System.out.println("Visited cities: " + Arrays.toString(visitedCities));
+        //System.out.println("Visited cities: " + Arrays.toString(visitedCities));
         for (int k = 0; k < 5; k++) {
             sumProbability[k] = 0;
         }
@@ -164,41 +169,40 @@ public class Realisation {
      * Запускает полный цикл алгоритма по поиску города и обновлению феромонов
      * @param startingCity начальный город
      */
-    public static void runAlgorithm(int startingCity) {
-        Realisation mv = new Realisation();
-        mv.initialization();
+    public void runAlgorithm(int startingCity) {
+//        Realisation mv = new Realisation();
+        initialization();
         int i = 0;
         int selectedCity = startingCity;
-        mv.travel = new ArrayList<>();
-        mv.travel.add(startingCity);
+        travel = new ArrayList<>();
+        travel.add(startingCity);
         while (hasMoreCitiesToGo()) {
-
-            mv.updateSumProbability(selectedCity);
-            mv.getProbabilityForCity(selectedCity);
-            selectedCity = mv.chooseCity(selectedCity);
+            updateSumProbability(selectedCity);
+            getProbabilityForCity(selectedCity);
+            selectedCity = chooseCity(selectedCity);
             if (selectedCity == 12) {
                 break;
             }
-            System.out.println("THE NEXT CITY IS: " + selectedCity + "[0-" + (CITIES - 1) + "]");
-            mv.travel.add(selectedCity);
-            System.out.println("-----------------------------------------------------------------");
+            //System.out.println("THE NEXT CITY IS: " + selectedCity + "[0-" + (CITIES - 1) + "]");
+            travel.add(selectedCity);
+            //System.out.println("-----------------------------------------------------------------");
         }
-        mv.getCompletedLength(mv.travel.get(0), mv.travel.get(mv.travel.size() - 1));
-        //System.out.println("TRAVEL "+mv.travel);
-        System.out.print("THE TRAVEL IS:");
-        for (Integer city : mv.travel) {
-            System.out.print(" -> " + city);
-        }
-        System.out.print(" -> " + mv.travel.get(0));
-        mv.updatePheromones();
-        System.out.println("");
-        System.out.println("PHEROMONES:");
-        for (int k = 0; k < CITIES; k++) {
-            for (int j = 0; j < CITIES; j++) {
-                System.out.printf("%.2f\t", mv.roadPheromone[k][j]);
-            }
-            System.out.println("");
-        }
+        getCompletedLength(travel.get(0), travel.get(travel.size() - 1));
+//        System.out.print("THE TRAVEL IS:");
+//        for (Integer city : travel) {
+//            System.out.print(" -> " + city);
+//        }
+//        System.out.print(" -> " + travel.get(0));
+        updatePheromones();
+        //System.out.println("");
+        //System.out.println("PHEROMONES:");
+//        for (int k = 0; k < CITIES; k++) {
+//            for (int j = 0; j < CITIES; j++) {
+//                System.out.printf("%.2f\t", roadPheromone[k][j]);
+//            }
+//            System.out.println("");
+//        }
+        //System.out.println("LENGTH OF WAY: "+ lengthOfWay);
     }
     
     /**
@@ -215,9 +219,9 @@ public class Realisation {
         int last = 1;
         for (int i = 0; i < CITIES; i++) {
             if (i == CITIES - 1) {
-                roadPheromone[this.travel.get(travel.size() - 1)][this.travel.get(0)] += pieceOfPheromone;
+                roadPheromone[travel.get(travel.size() - 1)][travel.get(0)] += pieceOfPheromone;
             } else {
-                roadPheromone[this.travel.get(first)][this.travel.get(last)] += pieceOfPheromone;
+                roadPheromone[travel.get(first)][travel.get(last)] += pieceOfPheromone;
                 first++;
                 last++;
             }
@@ -237,7 +241,7 @@ public class Realisation {
      * Проверяем, остались ли еще непосещенные города
      * @return true или false
      */
-    public static boolean hasMoreCitiesToGo() {
+    public boolean hasMoreCitiesToGo() {
         for (int i = 0; i < visitedCities.length; i++) {
             if (visitedCities[i] == false) {
                 return true;
@@ -247,6 +251,30 @@ public class Realisation {
     }
     
     public static void main(String[] args) {
-        runAlgorithm(0);
+        Realisation mv = new Realisation();
+        for(int i=0;i<300;i++){
+            mv.runAlgorithm(0);
+        }
+        System.out.println(mv.lengthOfWay+"    mv1-100");
+        Realisation mv2 = new Realisation();
+        for(int i=0;i<300;i++){
+            mv2.runAlgorithm(0);
+        }
+        System.out.println(mv2.lengthOfWay+"    mv2-100");
+        Realisation mv3 = new Realisation();
+        for(int i=0;i<300;i++){
+            mv3.runAlgorithm(0);
+        }
+        System.out.println(mv3.lengthOfWay+"    mv3-100");
+        Realisation mv4 = new Realisation();
+        for(int i=0;i<300;i++){
+            mv4.runAlgorithm(0);
+        }
+        System.out.println(mv4.lengthOfWay+"    mv4-100");
+        Realisation mv5 = new Realisation();
+        for(int i=0;i<300;i++){
+            mv5.runAlgorithm(0);
+        }
+        System.out.println(mv5.lengthOfWay+"    mv5-100");
     }
 }
