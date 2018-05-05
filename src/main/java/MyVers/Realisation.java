@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * Этот класс будет наследоваться от TemplateAlgorithm и будет применен паттерн
@@ -149,7 +150,7 @@ public class Realisation {
         visitedCities[currentCity] = true;//FOR EXAMPLE
 
         //System.out.println("Visited cities: " + Arrays.toString(visitedCities));
-        for (int k = 0; k < 5; k++) {
+        for (int k = 0; k < CITIES; k++) {
             sumProbability[k] = 0;
         }
         int i = currentCity;
@@ -250,8 +251,34 @@ public class Realisation {
         return false;
     }
     
+    public void inputMatrix() {
+        Scanner in = new Scanner(System.in);
+        for (int i = 1; i < 5; i++) {
+            System.out.println("Введите "+(i+1)+" элемент первой строки");
+            roadLength[0][i] = in.nextInt();
+            roadLength[i][0] = roadLength[0][i];
+        }
+        for (int i = 2; i < 5; i++) {
+            System.out.println("Введите "+(i+1)+" элемент второй строки");
+            roadLength[1][i] = in.nextInt();
+            roadLength[i][1] = roadLength[1][i];
+        }
+        for (int i = 3; i < 5; i++) {
+            System.out.println("Введите "+(i+1)+" элемент третьей строки");
+            roadLength[2][i] = in.nextInt();
+            roadLength[i][2] = roadLength[2][i];
+        }
+        for (int i = 4; i < 5; i++) {
+            System.out.println("Введите "+(i+1)+" элемент четвертой строки");
+            roadLength[3][i] = in.nextInt();
+            roadLength[i][3] = roadLength[3][i];
+        }
+    }
+    
     public static void main(String[] args) {
         Realisation mv = new Realisation();
+        //mv.inputMatrix();
+        //System.out.println(Arrays.toString(mv.roadLength));
         for(int i=0;i<300;i++){
             mv.runAlgorithm(0);
         }
