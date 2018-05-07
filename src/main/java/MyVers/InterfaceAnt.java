@@ -1,212 +1,111 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MyVers;
 
 import com.sun.glass.events.KeyEvent;
+import java.util.ArrayList;
+import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 /**
- *
+ * Интерфейс для муравьиного алгоритма
  * @author Влад
  */
 public final class InterfaceAnt extends javax.swing.JFrame {
 
     private boolean checkBoxFlag = false;
+    private ArrayList<JTextField> inputFields;
+    private ArrayList<JTextField> dependedFields;
+    
     /**
      * Creates new form InterfaceAnt
      */
     public InterfaceAnt() {
         setLocationRelativeTo(null);
         initComponents();
-        setTransferHandlers();
-        fieldNumberKeyTypedSettings();
+        fillArrayLists();
+        disablePaste();
+        addDocumentListenersToFields();
     }
-
-    public void fieldNumberKeyTypedSettings() {
-        fieldNumber01.getDocument().addDocumentListener(new DocumentListener() {
+    /**
+     * Заполняет ArrayList-ы полями
+     */
+    public void fillArrayLists() {
+        inputFields = new ArrayList<>();
+        dependedFields = new ArrayList<>();
+        
+        inputFields.add(fieldNumber01);
+        inputFields.add(fieldNumber02);
+        inputFields.add(fieldNumber03);
+        inputFields.add(fieldNumber04);
+        inputFields.add(fieldNumber12);
+        inputFields.add(fieldNumber13);
+        inputFields.add(fieldNumber14);
+        inputFields.add(fieldNumber23);
+        inputFields.add(fieldNumber24);
+        inputFields.add(fieldNumber34);
+        
+        dependedFields.add(fieldNumber10);
+        dependedFields.add(fieldNumber20);
+        dependedFields.add(fieldNumber30);
+        dependedFields.add(fieldNumber40);
+        dependedFields.add(fieldNumber21);
+        dependedFields.add(fieldNumber31);
+        dependedFields.add(fieldNumber41);
+        dependedFields.add(fieldNumber32);
+        dependedFields.add(fieldNumber42);
+        dependedFields.add(fieldNumber43);
+    }
+    /**
+     * Добавляет слушателей событий для полей ввода
+     */
+    public void addDocumentListenersToFields() {
+        for (int i = 0; i < inputFields.size(); i++) {
+            addDocumentUpdate(inputFields.get(i), dependedFields.get(i));
+        }
+    }
+    /**
+     * Добавляет слушатель для поля, который при вводе значения дублирует его 
+     * в зеркальном поле матрицы
+     * @param changingField поле, в которое вводится значение
+     * @param dependedField поле, зависящее от вводимого значения
+     */
+    public void addDocumentUpdate(JTextField changingField, JTextField dependedField) {
+        changingField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                fieldNumber10.setText(fieldNumber01.getText());
+                dependedField.setText(changingField.getText());
             }
-
+            
             @Override
             public void removeUpdate(DocumentEvent e) {
-                fieldNumber10.setText(fieldNumber01.getText());
+                dependedField.setText(changingField.getText());
             }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber02.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber20.setText(fieldNumber02.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber20.setText(fieldNumber02.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber03.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber30.setText(fieldNumber03.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber30.setText(fieldNumber03.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber04.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber40.setText(fieldNumber04.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber40.setText(fieldNumber04.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber12.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber21.setText(fieldNumber12.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber21.setText(fieldNumber12.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber13.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber31.setText(fieldNumber13.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber31.setText(fieldNumber13.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber14.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber41.setText(fieldNumber14.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber41.setText(fieldNumber14.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber23.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber32.setText(fieldNumber23.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber32.setText(fieldNumber23.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber24.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber42.setText(fieldNumber24.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber42.setText(fieldNumber24.getText());
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-            }
-        });
-        fieldNumber34.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                fieldNumber43.setText(fieldNumber34.getText());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                fieldNumber43.setText(fieldNumber34.getText());
-            }
-
+            
             @Override
             public void changedUpdate(DocumentEvent e) {
             }
         });
     }
-
-    public void setTransferHandlers() {
-        fieldNumber00.setTransferHandler(null);
-        fieldNumber01.setTransferHandler(null);
-        fieldNumber02.setTransferHandler(null);
-        fieldNumber03.setTransferHandler(null);
-        fieldNumber04.setTransferHandler(null);
-        fieldNumber10.setTransferHandler(null);
-        fieldNumber11.setTransferHandler(null);
-        fieldNumber12.setTransferHandler(null);
-        fieldNumber13.setTransferHandler(null);
-        fieldNumber14.setTransferHandler(null);
-        fieldNumber20.setTransferHandler(null);
-        fieldNumber21.setTransferHandler(null);
-        fieldNumber22.setTransferHandler(null);
-        fieldNumber23.setTransferHandler(null);
-        fieldNumber24.setTransferHandler(null);
-        fieldNumber30.setTransferHandler(null);
-        fieldNumber31.setTransferHandler(null);
-        fieldNumber32.setTransferHandler(null);
-        fieldNumber33.setTransferHandler(null);
-        fieldNumber34.setTransferHandler(null);
-        fieldNumber40.setTransferHandler(null);
-        fieldNumber41.setTransferHandler(null);
-        fieldNumber42.setTransferHandler(null);
-        fieldNumber43.setTransferHandler(null);
-        fieldNumber44.setTransferHandler(null);
+    /**
+     * Отключает вставку для полей ввода
+     */
+    public void disablePaste() {
+        for(JTextField field : inputFields){
+            field.setTransferHandler(null);
+        }
     }
-
+    
+    /**
+     * Обработчик события ввода значений, запрещает ввод не цифровых значений
+     * @param evt событие ввода
+     */
+    public void keyTypedEvent(java.awt.event.KeyEvent evt) {
+        char vchar = evt.getKeyChar();
+        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -564,47 +463,34 @@ public final class InterfaceAnt extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fieldNumber01KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber01KeyTyped
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber01KeyTyped
 
     private void fieldNumber02KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber02KeyTyped
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber02KeyTyped
 
     private void fieldNumber03KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber03KeyTyped
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber03KeyTyped
 
     private void fieldNumber12KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber12KeyTyped
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber12KeyTyped
 
     private void fieldNumber13KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber13KeyTyped
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber13KeyTyped
 
     private void fieldNumber23KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber23KeyTyped
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber23KeyTyped
-
+   
+    /**
+     * Недоработанный метод показа матрицы в зависимости от выбранного размера
+     * в чекбосе
+     * @param evt событие чекбокса
+     */
     private void matrixBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_matrixBoxItemStateChanged
         // TODO add your handling code here:
         if (checkBoxFlag == true) {
@@ -614,42 +500,25 @@ public final class InterfaceAnt extends javax.swing.JFrame {
             }else if (matrixBox.getSelectedIndex() == 1) {
                 fieldNumber04.setVisible(true);
                 System.out.println("DONE2");
-                
             }
         } 
         checkBoxFlag = checkBoxFlag != true;
     }//GEN-LAST:event_matrixBoxItemStateChanged
 
     private void fieldNumber04KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber04KeyTyped
-        // TODO add your handling code here:
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber04KeyTyped
 
     private void fieldNumber14KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber14KeyTyped
-        // TODO add your handling code here:
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber14KeyTyped
 
     private void fieldNumber24KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber24KeyTyped
-        // TODO add your handling code here:
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber24KeyTyped
 
     private void fieldNumber34KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber34KeyTyped
-        // TODO add your handling code here:
-        char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+        keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber34KeyTyped
 
     /**
