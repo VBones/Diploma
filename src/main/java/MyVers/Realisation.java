@@ -276,32 +276,44 @@ public class Realisation {
     }
     
     public static void main(String[] args) {
+        go();
+    }
+    
+    public static ArrayList go(){
         Realisation mv = new Realisation();
+        ArrayList<Integer> way = new ArrayList<>();
         //mv.inputMatrix();
         //System.out.println(Arrays.toString(mv.roadLength));
         for(int i=0;i<300;i++){
             mv.runAlgorithm(0);
         }
+        way.add(mv.lengthOfWay);
         System.out.println(mv.lengthOfWay+"    mv1-100");
         Realisation mv2 = new Realisation();
         for(int i=0;i<300;i++){
             mv2.runAlgorithm(0);
         }
+        way.add(mv2.lengthOfWay);
         System.out.println(mv2.lengthOfWay+"    mv2-100");
         Realisation mv3 = new Realisation();
         for(int i=0;i<300;i++){
             mv3.runAlgorithm(0);
         }
+        way.add(mv3.lengthOfWay);
         System.out.println(mv3.lengthOfWay+"    mv3-100");
         Realisation mv4 = new Realisation();
         for(int i=0;i<300;i++){
             mv4.runAlgorithm(0);
         }
+        way.add(mv4.lengthOfWay);
         System.out.println(mv4.lengthOfWay+"    mv4-100");
         Realisation mv5 = new Realisation();
         for(int i=0;i<300;i++){
             mv5.runAlgorithm(0);
         }
+        way.add(mv5.lengthOfWay);
         System.out.println(mv5.lengthOfWay+"    mv5-100");
+        
+        return way;
     }
 }
