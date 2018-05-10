@@ -570,7 +570,16 @@ public final class InterfaceAnt extends javax.swing.JFrame {
      */
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-        ArrayList way = Realisation.go();
+        ArrayList<Integer> inputs = new ArrayList<>();
+        for(JTextField field : inputFields) {
+            if(field.getText().length() != 0 && Integer.parseInt(field.getText()) != 0) {
+                inputs.add(Integer.parseInt(field.getText()));
+            }else{
+                inputs.add(1);
+                System.out.println("THERE IS AN NUL!");
+            }
+        }
+        ArrayList way = Realisation.go(inputs);
         wayLabel.setText(way.toString());
     }//GEN-LAST:event_startButtonActionPerformed
 

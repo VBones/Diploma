@@ -3,6 +3,7 @@ package MyVers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -251,36 +252,46 @@ public class Realisation {
         return false;
     }
     
-    public void inputMatrix() {
-        Scanner in = new Scanner(System.in);
+    public void inputMatrix(ArrayList inputs) {
+//        Scanner in = new Scanner(System.in);
+        Iterator iteratorInput = inputs.iterator();
         for (int i = 1; i < 5; i++) {
-            System.out.println("Введите "+(i+1)+" элемент первой строки");
-            roadLength[0][i] = in.nextInt();
-            roadLength[i][0] = roadLength[0][i];
+//            System.out.println("Введите " + (i + 1) + " элемент первой строки");
+            if (iteratorInput.hasNext()) {
+                roadLength[0][i] = (Integer)iteratorInput.next();
+                roadLength[i][0] = roadLength[0][i];
+            }
         }
         for (int i = 2; i < 5; i++) {
-            System.out.println("Введите "+(i+1)+" элемент второй строки");
-            roadLength[1][i] = in.nextInt();
-            roadLength[i][1] = roadLength[1][i];
+//            System.out.println("Введите "+(i+1)+" элемент второй строки");
+            if (iteratorInput.hasNext()) {
+                roadLength[1][i] = (Integer)iteratorInput.next();
+                roadLength[i][1] = roadLength[1][i];
+            }
         }
         for (int i = 3; i < 5; i++) {
-            System.out.println("Введите "+(i+1)+" элемент третьей строки");
-            roadLength[2][i] = in.nextInt();
-            roadLength[i][2] = roadLength[2][i];
+//            System.out.println("Введите "+(i+1)+" элемент третьей строки");
+            if (iteratorInput.hasNext()) {
+                roadLength[2][i] = (Integer)iteratorInput.next();
+                roadLength[i][2] = roadLength[2][i];
+            }
         }
         for (int i = 4; i < 5; i++) {
-            System.out.println("Введите "+(i+1)+" элемент четвертой строки");
-            roadLength[3][i] = in.nextInt();
-            roadLength[i][3] = roadLength[3][i];
+//            System.out.println("Введите "+(i+1)+" элемент четвертой строки");
+            if (iteratorInput.hasNext()) {
+                roadLength[3][i] = (Integer)iteratorInput.next();
+                roadLength[i][3] = roadLength[3][i];
+            }
         }
     }
     
     public static void main(String[] args) {
-        go();
+//        go();
     }
     
-    public static ArrayList go(){
+    public static ArrayList go(ArrayList input){
         Realisation mv = new Realisation();
+        mv.inputMatrix(input);
         ArrayList<Integer> way = new ArrayList<>();
         //mv.inputMatrix();
         //System.out.println(Arrays.toString(mv.roadLength));
@@ -290,24 +301,28 @@ public class Realisation {
         way.add(mv.lengthOfWay);
         System.out.println(mv.lengthOfWay+"    mv1-100");
         Realisation mv2 = new Realisation();
+        mv2.inputMatrix(input);
         for(int i=0;i<300;i++){
             mv2.runAlgorithm(0);
         }
         way.add(mv2.lengthOfWay);
         System.out.println(mv2.lengthOfWay+"    mv2-100");
         Realisation mv3 = new Realisation();
+        mv3.inputMatrix(input);
         for(int i=0;i<300;i++){
             mv3.runAlgorithm(0);
         }
         way.add(mv3.lengthOfWay);
         System.out.println(mv3.lengthOfWay+"    mv3-100");
         Realisation mv4 = new Realisation();
+        mv4.inputMatrix(input);
         for(int i=0;i<300;i++){
             mv4.runAlgorithm(0);
         }
         way.add(mv4.lengthOfWay);
         System.out.println(mv4.lengthOfWay+"    mv4-100");
         Realisation mv5 = new Realisation();
+        mv5.inputMatrix(input);
         for(int i=0;i<300;i++){
             mv5.runAlgorithm(0);
         }
