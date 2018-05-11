@@ -1,6 +1,7 @@
 package MyVers;
 
 import com.sun.glass.events.KeyEvent;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -385,11 +386,6 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         jLabel1.setText("RESULT SET:");
 
         jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -583,7 +579,11 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                     field.setVisible(true);
                     field.setEditable(true);
                 }
+                    fieldNumber44.setText("0");
+                    fieldNumber44.setEditable(false);
             }
+            setSize(new Dimension(this.getWidth()+1,this.getHeight()+1));
+            setSize(new Dimension(this.getWidth()-1,this.getHeight()-1));
         } 
         checkBoxFlag = checkBoxFlag != true;
     }//GEN-LAST:event_matrixBoxItemStateChanged
@@ -615,11 +615,6 @@ public final class InterfaceAnt extends javax.swing.JFrame {
             runAlgo(5);
         }
     }//GEN-LAST:event_startButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        jButton1.setText("go");
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void runAlgo(int rowscols) throws NumberFormatException {
         int[][] inputes = new int[rowscols][rowscols];
