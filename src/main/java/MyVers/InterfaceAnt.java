@@ -16,6 +16,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
     private ArrayList<JTextField> inputFields;
     private ArrayList<JTextField> dependedFields;
     private ArrayList<JTextField> fields5x5;
+    private  JTextField[][] arr;
     
     
     /**
@@ -35,6 +36,33 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         inputFields = new ArrayList<>();
         dependedFields = new ArrayList<>();
         fields5x5 = new ArrayList<>();
+        arr = new JTextField[5][5];
+        
+        arr[0][0] = fieldNumber00;
+        arr[0][1] = fieldNumber01;
+        arr[0][2] = fieldNumber02;
+        arr[0][3] = fieldNumber03;
+        arr[0][4] = fieldNumber04;
+        arr[1][0] = fieldNumber10;
+        arr[1][1] = fieldNumber11;
+        arr[1][2] = fieldNumber12;
+        arr[1][3] = fieldNumber13;
+        arr[1][4] = fieldNumber14;
+        arr[2][0] = fieldNumber20;
+        arr[2][1] = fieldNumber21;
+        arr[2][2] = fieldNumber22;
+        arr[2][3] = fieldNumber23;
+        arr[2][4] = fieldNumber24;
+        arr[3][0] = fieldNumber30;
+        arr[3][1] = fieldNumber31;
+        arr[3][2] = fieldNumber32;
+        arr[3][3] = fieldNumber33;
+        arr[3][4] = fieldNumber34;
+        arr[4][0] = fieldNumber40;
+        arr[4][1] = fieldNumber41;
+        arr[4][2] = fieldNumber42;
+        arr[4][3] = fieldNumber43;
+        arr[4][4] = fieldNumber44;
         
         inputFields.add(fieldNumber01);
         inputFields.add(fieldNumber02);
@@ -160,6 +188,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber44 = new javax.swing.JTextField();
         wayLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -355,6 +384,13 @@ public final class InterfaceAnt extends javax.swing.JFrame {
 
         jLabel1.setText("RESULT SET:");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -362,9 +398,6 @@ public final class InterfaceAnt extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(matrixBox, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(fieldNumber40, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -427,7 +460,12 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                                 .addComponent(fieldNumber23, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(fieldNumber24, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(matrixBox, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -466,11 +504,12 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(fieldNumber42, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(fieldNumber43, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fieldNumber44, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fieldNumber44, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(fieldNumber40, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(fieldNumber41, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(matrixBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,13 +576,13 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                 for (JTextField field : fields5x5) {
                     field.setVisible(false);
                     field.setText("");
+                    field.setEditable(false);
                 }
-                System.out.println("DONE1");
             }else if (matrixBox.getSelectedIndex() == 1) {
                 for (JTextField field : fields5x5) {
                     field.setVisible(true);
+                    field.setEditable(true);
                 }
-                System.out.println("DONE2");
             }
         } 
         checkBoxFlag = checkBoxFlag != true;
@@ -570,18 +609,32 @@ public final class InterfaceAnt extends javax.swing.JFrame {
      */
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-        ArrayList<Integer> inputs = new ArrayList<>();
-        for(JTextField field : inputFields) {
-            if(field.getText().length() != 0 && Integer.parseInt(field.getText()) != 0) {
-                inputs.add(Integer.parseInt(field.getText()));
-            }else{
-                inputs.add(1);
-                System.out.println("THERE IS AN NUL!");
+        if (matrixBox.getSelectedIndex() == 0) {
+            runAlgo(4);
+        } else if (matrixBox.getSelectedIndex() == 1) {
+            runAlgo(5);
+        }
+    }//GEN-LAST:event_startButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        jButton1.setText("go");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void runAlgo(int rowscols) throws NumberFormatException {
+        int[][] inputes = new int[rowscols][rowscols];
+        for (int r = 0; r < rowscols; r++) {
+            for (int c = 0; c < rowscols; c++) {
+                if ((r == c) | (arr[r][c].getText().length() != 0 && Integer.parseInt(arr[r][c].getText()) != 0)) {
+                    inputes[r][c] = Integer.parseInt(arr[r][c].getText());
+                } else {
+                    inputes[r][c] = 1;
+                }
             }
         }
-        ArrayList way = Realisation.go(inputs);
+        ArrayList way = Realisation.go(inputes, rowscols);
         wayLabel.setText(way.toString());
-    }//GEN-LAST:event_startButtonActionPerformed
+    }
 
     /**
      * @param args the command line arguments
@@ -645,6 +698,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
     private javax.swing.JTextField fieldNumber42;
     private javax.swing.JTextField fieldNumber43;
     private javax.swing.JTextField fieldNumber44;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

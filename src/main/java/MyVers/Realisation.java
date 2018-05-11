@@ -25,29 +25,31 @@ public class Realisation {
     public static final double BETA = 1;//если = 0, то игнорируем расстояние
     public static final double P = 0.2;//коэфициент испарения феромонов
     public static final double Q = 300;//коэфициент для нахождения феромона нового
-    static final int CITIES = 5;
+    static int CITIES;
     static final int ANTS = 5;
     static final int TIME = 200;
 
-    int[][] roadLength = {
-        {0, 38, 74, 59, 45},
-        {38, 0, 46, 61, 72},
-        {74, 46, 0, 49, 85},
-        {59, 61, 49, 0, 42},
-        {45, 72, 85, 42, 0}};
+    int[][] roadLength;
+//    {
+//        {0, 38, 74, 59, 45},
+//        {38, 0, 46, 61, 72},
+//        {74, 46, 0, 49, 85},
+//        {59, 61, 49, 0, 42},
+//        {45, 72, 85, 42, 0}};
     
-    double[][] roadPheromone = {
-        {0, 3, 2, 2, 2},
-        {3, 0, 1, 1, 1},
-        {2, 1, 0, 2, 2},
-        {2, 1, 2, 0, 1},
-        {2, 1, 2, 1, 0}};
+    double[][] roadPheromone;
+//    {
+//        {0, 3, 2, 2, 2},
+//        {3, 0, 1, 1, 1},
+//        {2, 1, 0, 2, 2},
+//        {2, 1, 2, 0, 1},
+//        {2, 1, 2, 1, 0}};
     
     public int lengthOfWay;
     ArrayList<Integer> travel;
-    double[] sumProbability = new double[CITIES];
-    boolean[] visitedCities = new boolean[CITIES];
-    double[][] probabilities = new double[CITIES][CITIES];
+    double[] sumProbability;
+    boolean[] visitedCities;
+    double[][] probabilities;
 
     /**
      *
@@ -155,7 +157,7 @@ public class Realisation {
             sumProbability[k] = 0;
         }
         int i = currentCity;
-        for (int j = 0; j < 5; j++) {
+        for (int j = 0; j < CITIES; j++) {
             if (visitedCities[j] != true) {
                 sumProbability[i] = sumProbability[i] + (Math.pow(roadPheromone[i][j], ALPHA) / Math.pow(roadLength[i][j], BETA));
             }
@@ -178,6 +180,7 @@ public class Realisation {
         int selectedCity = startingCity;
         travel = new ArrayList<>();
         travel.add(startingCity);
+        System.out.println(Arrays.toString(visitedCities));
         while (hasMoreCitiesToGo()) {
             updateSumProbability(selectedCity);
             getProbabilityForCity(selectedCity);
@@ -185,7 +188,7 @@ public class Realisation {
             if (selectedCity == 12) {
                 break;
             }
-            //System.out.println("THE NEXT CITY IS: " + selectedCity + "[0-" + (CITIES - 1) + "]");
+//            System.out.println("THE NEXT CITY IS: " + selectedCity + "[0-" + (CITIES - 1) + "]");
             travel.add(selectedCity);
             //System.out.println("-----------------------------------------------------------------");
         }
@@ -252,35 +255,38 @@ public class Realisation {
         return false;
     }
     
-    public void inputMatrix(ArrayList inputs) {
+    public void inputMatrix(int[][] inputs, int size) {
+        CITIES = size;
+        Random rnd = new Random();
+        roadLength = new int[size][size];
+        roadPheromone = new double[size][size];
+        for (int r = 0; r < size; r++) {
+            for (int c = 0; c < size; c++) {
+                roadLength[r][c] = inputs[r][c];
+            }
+        }
 //        Scanner in = new Scanner(System.in);
-        Iterator iteratorInput = inputs.iterator();
-        for (int i = 1; i < 5; i++) {
+//        Iterator iteratorInput = inputs.iterator();
+        for (int i = 1; i < size; i++) {
 //            System.out.println("Введите " + (i + 1) + " элемент первой строки");
-            if (iteratorInput.hasNext()) {
-                roadLength[0][i] = (Integer)iteratorInput.next();
-                roadLength[i][0] = roadLength[0][i];
-            }
+            roadPheromone[0][i] = rnd.nextInt(2) + 1;
+            roadPheromone[i][0] = roadPheromone[0][i];
         }
-        for (int i = 2; i < 5; i++) {
+        for (int i = 2; i < size; i++) {
 //            System.out.println("Введите "+(i+1)+" элемент второй строки");
-            if (iteratorInput.hasNext()) {
-                roadLength[1][i] = (Integer)iteratorInput.next();
-                roadLength[i][1] = roadLength[1][i];
-            }
+            roadPheromone[1][i] = rnd.nextInt(2) + 1;
+            roadPheromone[i][1] = roadPheromone[1][i];
         }
-        for (int i = 3; i < 5; i++) {
+        for (int i = 3; i < size; i++) {
 //            System.out.println("Введите "+(i+1)+" элемент третьей строки");
-            if (iteratorInput.hasNext()) {
-                roadLength[2][i] = (Integer)iteratorInput.next();
-                roadLength[i][2] = roadLength[2][i];
-            }
+            roadPheromone[2][i] = rnd.nextInt(2) + 1;
+            roadPheromone[i][2] = roadPheromone[2][i];
         }
-        for (int i = 4; i < 5; i++) {
+        if (size == 5) {
+            for (int i = 4; i < size; i++) {
 //            System.out.println("Введите "+(i+1)+" элемент четвертой строки");
-            if (iteratorInput.hasNext()) {
-                roadLength[3][i] = (Integer)iteratorInput.next();
-                roadLength[i][3] = roadLength[3][i];
+                roadPheromone[3][i] = rnd.nextInt(2) + 1;
+                roadPheromone[i][3] = roadPheromone[3][i];
             }
         }
     }
@@ -288,10 +294,17 @@ public class Realisation {
     public static void main(String[] args) {
 //        go();
     }
+
+    public Realisation(int cities) {
+        CITIES = cities;
+        sumProbability = new double[CITIES];
+        visitedCities = new boolean[CITIES];
+        probabilities = new double[CITIES][CITIES];
+    }
     
-    public static ArrayList go(ArrayList input){
-        Realisation mv = new Realisation();
-        mv.inputMatrix(input);
+    public static ArrayList go(int[][] input, int size){
+        Realisation mv = new Realisation(size);
+        mv.inputMatrix(input, size);
         ArrayList<Integer> way = new ArrayList<>();
         //mv.inputMatrix();
         //System.out.println(Arrays.toString(mv.roadLength));
@@ -300,29 +313,29 @@ public class Realisation {
         }
         way.add(mv.lengthOfWay);
         System.out.println(mv.lengthOfWay+"    mv1-100");
-        Realisation mv2 = new Realisation();
-        mv2.inputMatrix(input);
+        Realisation mv2 = new Realisation(size);
+        mv2.inputMatrix(input, size);
         for(int i=0;i<300;i++){
             mv2.runAlgorithm(0);
         }
         way.add(mv2.lengthOfWay);
         System.out.println(mv2.lengthOfWay+"    mv2-100");
-        Realisation mv3 = new Realisation();
-        mv3.inputMatrix(input);
+        Realisation mv3 = new Realisation(size);
+        mv3.inputMatrix(input, size);
         for(int i=0;i<300;i++){
             mv3.runAlgorithm(0);
         }
         way.add(mv3.lengthOfWay);
         System.out.println(mv3.lengthOfWay+"    mv3-100");
-        Realisation mv4 = new Realisation();
-        mv4.inputMatrix(input);
+        Realisation mv4 = new Realisation(size);
+        mv4.inputMatrix(input, size);
         for(int i=0;i<300;i++){
             mv4.runAlgorithm(0);
         }
         way.add(mv4.lengthOfWay);
         System.out.println(mv4.lengthOfWay+"    mv4-100");
-        Realisation mv5 = new Realisation();
-        mv5.inputMatrix(input);
+        Realisation mv5 = new Realisation(size);
+        mv5.inputMatrix(input, size);
         for(int i=0;i<300;i++){
             mv5.runAlgorithm(0);
         }
