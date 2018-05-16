@@ -3,6 +3,7 @@ package MyVers;
 import com.sun.glass.events.KeyEvent;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -543,7 +544,12 @@ public final class InterfaceAnt extends javax.swing.JFrame {
 
         jLabel1.setText("RESULT SET:");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("GET100RANDOM");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         fieldNumber05.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber05.setMinimumSize(new java.awt.Dimension(34, 24));
@@ -1445,18 +1451,19 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                                             .addGap(210, 210, 210)
                                             .addComponent(fieldNumber78, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(fieldNumber86, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fieldNumber87, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fieldNumber88, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fieldNumber89, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(fieldNumber80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(fieldNumber82, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(fieldNumber81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(fieldNumber83, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(fieldNumber84, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(fieldNumber85, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(fieldNumber85, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(fieldNumber86, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fieldNumber87, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fieldNumber88, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(fieldNumber89, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -1535,7 +1542,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         if (matrixBox.getSelectedIndex() == 0) {
             runAlgo(10);
         } else if (matrixBox.getSelectedIndex() == 1) {
-            runAlgo(5);
+            runAlgo(10);
         }
     }//GEN-LAST:event_startButtonActionPerformed
 
@@ -1543,6 +1550,20 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         // TODO add your handling code here:
         keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumberKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Random rnd = new Random();
+        int[][] inputes = new int[100][100];
+        for (int i = 0; i < 99; i++) {
+            for (int j = i + 1; j < 100; j++) {
+                inputes[i][j] = rnd.nextInt(200) + 1;
+                inputes[j][i] = inputes[i][j];
+            }
+        }
+        ArrayList way = Realisation.go(inputes, 100);
+        wayLabel.setText(way.toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * Заполняет массив tFieldArr значениями с полей ввода и вызывает алгоритм

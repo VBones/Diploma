@@ -180,12 +180,12 @@ public class Realisation {
         int selectedCity = startingCity;
         travel = new ArrayList<>();
         travel.add(startingCity);
-        System.out.println(Arrays.toString(visitedCities));
+        //System.out.println(Arrays.toString(visitedCities));
         while (hasMoreCitiesToGo()) {
             updateSumProbability(selectedCity);
             getProbabilityForCity(selectedCity);
             selectedCity = chooseCity(selectedCity);
-            if (selectedCity == 12) {
+            if (selectedCity == 122) {
                 break;
             }
 //            System.out.println("THE NEXT CITY IS: " + selectedCity + "[0-" + (CITIES - 1) + "]");
@@ -313,10 +313,10 @@ public class Realisation {
         mv.inputMatrix(input, size);
         ArrayList<Integer> way = new ArrayList<>();
         //mv.inputMatrix();
-        //System.out.println(Arrays.toString(mv.roadLength));
         for(int i=0;i<300;i++){
             mv.runAlgorithm(0);
         }
+//        System.out.println(mv.travel);
         way.add(mv.lengthOfWay);
         System.out.println(mv.lengthOfWay+"    mv1-100");
         Realisation mv2 = new Realisation(size);
@@ -324,6 +324,7 @@ public class Realisation {
         for(int i=0;i<300;i++){
             mv2.runAlgorithm(0);
         }
+//        System.out.println(mv2.travel);
         way.add(mv2.lengthOfWay);
         System.out.println(mv2.lengthOfWay+"    mv2-100");
         Realisation mv3 = new Realisation(size);
@@ -331,6 +332,7 @@ public class Realisation {
         for(int i=0;i<300;i++){
             mv3.runAlgorithm(0);
         }
+//        System.out.println(mv3.travel);
         way.add(mv3.lengthOfWay);
         System.out.println(mv3.lengthOfWay+"    mv3-100");
         Realisation mv4 = new Realisation(size);
@@ -338,6 +340,7 @@ public class Realisation {
         for(int i=0;i<300;i++){
             mv4.runAlgorithm(0);
         }
+//        System.out.println(mv4.travel);
         way.add(mv4.lengthOfWay);
         System.out.println(mv4.lengthOfWay+"    mv4-100");
         Realisation mv5 = new Realisation(size);
@@ -345,6 +348,7 @@ public class Realisation {
         for(int i=0;i<300;i++){
             mv5.runAlgorithm(0);
         }
+//        System.out.println(mv5.travel);
         way.add(mv5.lengthOfWay);
         System.out.println(mv5.lengthOfWay+"    mv5-100");
         
