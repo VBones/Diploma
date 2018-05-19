@@ -103,7 +103,7 @@ public class Realisation {
             probabsForChoose.add(probabilities[currentCity][i]);
         }
         Collections.sort(probabsForChoose);
-        //System.out.println(probabsForChoose);
+//        System.out.println(probabsForChoose);
 
         Random random = new Random();
         int randomValue = random.nextInt(100);
@@ -271,30 +271,6 @@ public class Realisation {
                 roadPheromone[j][i] = roadPheromone[i][j];
             }
         }
-//        Scanner in = new Scanner(System.in);
-//        Iterator iteratorInput = inputs.iterator();
-//        for (int i = 1; i < size; i++) {
-////            System.out.println("Введите " + (i + 1) + " элемент первой строки");
-//            roadPheromone[0][i] = rnd.nextInt(2) + 1;
-//            roadPheromone[i][0] = roadPheromone[0][i];
-//        }
-//        for (int i = 2; i < size; i++) {
-////            System.out.println("Введите "+(i+1)+" элемент второй строки");
-//            roadPheromone[1][i] = rnd.nextInt(2) + 1;
-//            roadPheromone[i][1] = roadPheromone[1][i];
-//        }
-//        for (int i = 3; i < size; i++) {
-////            System.out.println("Введите "+(i+1)+" элемент третьей строки");
-//            roadPheromone[2][i] = rnd.nextInt(2) + 1;
-//            roadPheromone[i][2] = roadPheromone[2][i];
-//        }
-//        if (size == 5) {
-//            for (int i = 4; i < size; i++) {
-////            System.out.println("Введите "+(i+1)+" элемент четвертой строки");
-//                roadPheromone[3][i] = rnd.nextInt(2) + 1;
-//                roadPheromone[i][3] = roadPheromone[3][i];
-//            }
-//        }
     }
     
     public static void main(String[] args) {
@@ -313,7 +289,6 @@ public class Realisation {
         StringBuilder resultTravel;
         mv.inputMatrix(input, size);
         ArrayList<StringBuilder> way = new ArrayList<>();
-        //mv.inputMatrix();
         for(int i=0;i<300;i++){
             mv.runAlgorithm(0);
         }
