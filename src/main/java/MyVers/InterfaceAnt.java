@@ -419,8 +419,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(matrixBox, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,21 +454,21 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(wayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(saveResultButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(doneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(146, 146, 146)
+                .addComponent(saveResultButton)
+                .addGap(18, 18, 18)
+                .addComponent(doneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(wayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(wayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
+                .addComponent(wayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveResultButton)
                     .addComponent(doneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -492,7 +491,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber01.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber01.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber01fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -501,7 +500,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber02.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber02.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber02fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -525,7 +524,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber12.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber12.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber12fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -534,7 +533,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber03.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber03.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber03fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -543,7 +542,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber13.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber13.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber13fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -574,7 +573,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber23.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber23.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber23fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -612,7 +611,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber04.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber04.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber04fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -621,7 +620,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber14.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber14.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber14fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -630,7 +629,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber24.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber24.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber24fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -639,7 +638,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber34.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber34.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber34fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -684,7 +683,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber05.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber05.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber05fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -693,7 +692,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber15.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber15.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber15fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -702,7 +701,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber25.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber25.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber25fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -711,7 +710,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber35.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber35.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber35fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -720,7 +719,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber45.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber45.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber45fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -814,7 +813,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber06.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber06.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber06fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -823,7 +822,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber16.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber16.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber16fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -832,7 +831,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber26.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber26.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber26fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -841,7 +840,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber36.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber36.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber36fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -850,7 +849,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber46.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber46.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber46fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -859,7 +858,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber56.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber56.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber56fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -933,7 +932,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber67.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber67.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber67fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -942,7 +941,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber57.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber57.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber57fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -951,7 +950,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber47.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber47.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber47fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -960,7 +959,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber37.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber37.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber37fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -969,7 +968,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber27.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber27.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber27fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -978,7 +977,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber17.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber17.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber17fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -987,7 +986,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber07.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber07.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber07fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1060,7 +1059,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber09.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber09.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber09fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1069,7 +1068,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber19.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber19.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber19fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1078,7 +1077,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber29.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber29.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber29fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1087,7 +1086,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber39.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber39.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber39fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1096,7 +1095,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber49.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber49.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber49fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1105,7 +1104,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber59.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber59.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber59fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1114,7 +1113,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber69.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber69.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber69fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1123,7 +1122,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber79.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber79.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber79fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1132,7 +1131,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber78.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber78.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber78fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1141,7 +1140,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber68.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber68.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber68fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1150,7 +1149,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber58.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber58.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber58fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1159,7 +1158,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber48.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber48.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber48fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1168,7 +1167,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber38.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber38.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber38fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1177,7 +1176,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber28.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber28.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber28fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1186,7 +1185,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber18.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber18.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber18fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1195,7 +1194,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber08.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber08.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber08fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1204,7 +1203,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         fieldNumber89.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber89.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldNumber89fieldNumberKeyTyped(evt);
+                fieldNumberKeyTyped(evt);
             }
         });
 
@@ -1669,9 +1668,11 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 9, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 461, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1689,6 +1690,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
     private void chooseFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseFileButtonActionPerformed
         // TODO add your handling code here:
         JFileChooser fileopen = new JFileChooser();
+        saveResultButton.setEnabled(false);
         int[][] ints = {};
         int d =0;
         int size=0;
@@ -1712,6 +1714,10 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                         break;
                     }
                     split = reader.readLine().split(" ");
+                    if (split.length != size) {
+                        throw new Exception("<html>Неверное количество элементов матрицы!"
+                                + "<br>Требуется " + size + " элементов! У вас: " + split.length + "!</html>");
+                    }
                     d = 0;
                 }
                 way = Realisation.go(ints, size);
@@ -1722,23 +1728,32 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                 Logger.getLogger(InterfaceAnt.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(InterfaceAnt.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NumberFormatException | NullPointerException ex) {
+                wayLabel1.setText("Указанный файл содержит неверные данные!");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                wayLabel1.setText(ex.getMessage());
             }
         }
     }//GEN-LAST:event_chooseFileButtonActionPerformed
 
     private void random100ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_random100ButtonActionPerformed
         // TODO add your handling code here:
-        Random rnd = new Random();
-        int[][] inputes = new int[100][100];
-        for (int i = 0; i < 99; i++) {
-            for (int j = i + 1; j < 100; j++) {
-                inputes[i][j] = rnd.nextInt(200) + 1;
-                inputes[j][i] = inputes[i][j];
+        try {
+            Random rnd = new Random();
+            int[][] inputes = new int[100][100];
+            for (int i = 0; i < 99; i++) {
+                for (int j = i + 1; j < 100; j++) {
+                    inputes[i][j] = rnd.nextInt(200) + 1;
+                    inputes[j][i] = inputes[i][j];
+                }
             }
+            way = Realisation.go(inputes, 100);
+            wayLabel1.setText(way.toString());
+            saveResultButton.setEnabled(true);
+        } catch (Exception e) {
+            wayLabel1.setText(e.getMessage());
         }
-        way = Realisation.go(inputes, 100);
-        wayLabel1.setText(way.toString());
-        saveResultButton.setEnabled(true);
     }//GEN-LAST:event_random100ButtonActionPerformed
 
     private void matrixBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_matrixBoxItemStateChanged
@@ -1784,238 +1799,22 @@ public final class InterfaceAnt extends javax.swing.JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
-        doneLabel.setText("");
-        if (matrixBox.getSelectedIndex() == 0) {
-            runAlgo(5);
-        } else if (matrixBox.getSelectedIndex() == 1) {
-            runAlgo(10);
+        try {
+            doneLabel.setText("");
+            if (matrixBox.getSelectedIndex() == 0) {
+                runAlgo(5);
+            } else if (matrixBox.getSelectedIndex() == 1) {
+                runAlgo(10);
+            }
+        } catch (Exception e) {
+            wayLabel1.setText(e.getMessage());
         }
     }//GEN-LAST:event_startButtonActionPerformed
 
-    private void fieldNumber01fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber01fieldNumberKeyTyped
+    private void fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumberKeyTyped
         // TODO add your handling code here:
         keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber01fieldNumberKeyTyped
-
-    private void fieldNumber02fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber02fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber02fieldNumberKeyTyped
-
-    private void fieldNumber12fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber12fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber12fieldNumberKeyTyped
-
-    private void fieldNumber03fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber03fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber03fieldNumberKeyTyped
-
-    private void fieldNumber13fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber13fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber13fieldNumberKeyTyped
-
-    private void fieldNumber23fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber23fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber23fieldNumberKeyTyped
-
-    private void fieldNumber04fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber04fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber04fieldNumberKeyTyped
-
-    private void fieldNumber14fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber14fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber14fieldNumberKeyTyped
-
-    private void fieldNumber24fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber24fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber24fieldNumberKeyTyped
-
-    private void fieldNumber34fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber34fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber34fieldNumberKeyTyped
-
-    private void fieldNumber05fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber05fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber05fieldNumberKeyTyped
-
-    private void fieldNumber15fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber15fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber15fieldNumberKeyTyped
-
-    private void fieldNumber25fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber25fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber25fieldNumberKeyTyped
-
-    private void fieldNumber35fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber35fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber35fieldNumberKeyTyped
-
-    private void fieldNumber45fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber45fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber45fieldNumberKeyTyped
-
-    private void fieldNumber06fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber06fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber06fieldNumberKeyTyped
-
-    private void fieldNumber16fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber16fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber16fieldNumberKeyTyped
-
-    private void fieldNumber26fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber26fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber26fieldNumberKeyTyped
-
-    private void fieldNumber36fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber36fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber36fieldNumberKeyTyped
-
-    private void fieldNumber46fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber46fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber46fieldNumberKeyTyped
-
-    private void fieldNumber56fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber56fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber56fieldNumberKeyTyped
-
-    private void fieldNumber67fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber67fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber67fieldNumberKeyTyped
-
-    private void fieldNumber57fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber57fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber57fieldNumberKeyTyped
-
-    private void fieldNumber47fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber47fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber47fieldNumberKeyTyped
-
-    private void fieldNumber37fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber37fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber37fieldNumberKeyTyped
-
-    private void fieldNumber27fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber27fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber27fieldNumberKeyTyped
-
-    private void fieldNumber17fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber17fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber17fieldNumberKeyTyped
-
-    private void fieldNumber07fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber07fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber07fieldNumberKeyTyped
-
-    private void fieldNumber09fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber09fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber09fieldNumberKeyTyped
-
-    private void fieldNumber19fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber19fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber19fieldNumberKeyTyped
-
-    private void fieldNumber29fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber29fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber29fieldNumberKeyTyped
-
-    private void fieldNumber39fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber39fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber39fieldNumberKeyTyped
-
-    private void fieldNumber49fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber49fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber49fieldNumberKeyTyped
-
-    private void fieldNumber59fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber59fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber59fieldNumberKeyTyped
-
-    private void fieldNumber69fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber69fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber69fieldNumberKeyTyped
-
-    private void fieldNumber79fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber79fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber79fieldNumberKeyTyped
-
-    private void fieldNumber78fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber78fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber78fieldNumberKeyTyped
-
-    private void fieldNumber68fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber68fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber68fieldNumberKeyTyped
-
-    private void fieldNumber58fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber58fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber58fieldNumberKeyTyped
-
-    private void fieldNumber48fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber48fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber48fieldNumberKeyTyped
-
-    private void fieldNumber38fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber38fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber38fieldNumberKeyTyped
-
-    private void fieldNumber28fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber28fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber28fieldNumberKeyTyped
-
-    private void fieldNumber18fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber18fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber18fieldNumberKeyTyped
-
-    private void fieldNumber08fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber08fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber08fieldNumberKeyTyped
-
-    private void fieldNumber89fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumber89fieldNumberKeyTyped
-        // TODO add your handling code here:
-        keyTypedEvent(evt);
-    }//GEN-LAST:event_fieldNumber89fieldNumberKeyTyped
+    }//GEN-LAST:event_fieldNumberKeyTyped
 
     private void saveResultButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveResultButtonActionPerformed
         // TODO add your handling code here:

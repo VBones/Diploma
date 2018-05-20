@@ -33,9 +33,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-          <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
-          <Component id="jPanel2" alignment="0" pref="461" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
+          </Group>
+          <Component id="jPanel2" pref="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -74,7 +77,6 @@
                   <Component id="matrixBox" min="-2" pref="71" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="startButton" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -167,16 +169,15 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="wayLabel1" min="-2" pref="375" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="saveResultButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="doneLabel" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                  <Component id="saveResultButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="doneLabel" min="-2" pref="58" max="-2" attributes="0"/>
                   <EmptySpace min="83" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <Component id="wayLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -184,8 +185,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="wayLabel1" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                  <Component id="wayLabel1" min="-2" pref="38" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="saveResultButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="doneLabel" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
@@ -728,7 +729,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber01fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber02">
@@ -744,7 +745,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber02fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber10">
@@ -793,7 +794,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber12fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber03">
@@ -809,7 +810,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber03fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber13">
@@ -825,7 +826,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber13fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber20">
@@ -890,7 +891,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber23fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber33">
@@ -971,7 +972,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber04fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber14">
@@ -987,7 +988,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber14fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber24">
@@ -1003,7 +1004,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber24fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber34">
@@ -1019,7 +1020,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber34fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber40">
@@ -1116,7 +1117,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber05fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber15">
@@ -1132,7 +1133,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber15fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber25">
@@ -1148,7 +1149,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber25fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber35">
@@ -1164,7 +1165,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber35fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber45">
@@ -1180,7 +1181,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber45fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber55">
@@ -1389,7 +1390,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber06fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber16">
@@ -1405,7 +1406,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber16fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber26">
@@ -1421,7 +1422,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber26fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber36">
@@ -1437,7 +1438,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber36fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber46">
@@ -1453,7 +1454,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber46fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber56">
@@ -1469,7 +1470,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber56fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber66">
@@ -1631,7 +1632,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber67fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber57">
@@ -1647,7 +1648,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber57fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber47">
@@ -1663,7 +1664,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber47fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber37">
@@ -1679,7 +1680,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber37fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber27">
@@ -1695,7 +1696,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber27fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber17">
@@ -1711,7 +1712,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber17fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber07">
@@ -1727,7 +1728,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber07fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber86">
@@ -1888,7 +1889,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber09fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber19">
@@ -1904,7 +1905,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber19fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber29">
@@ -1920,7 +1921,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber29fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber39">
@@ -1936,7 +1937,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber39fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber49">
@@ -1952,7 +1953,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber49fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber59">
@@ -1968,7 +1969,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber59fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber69">
@@ -1984,7 +1985,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber69fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber79">
@@ -2000,7 +2001,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber79fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber78">
@@ -2016,7 +2017,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber78fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber68">
@@ -2032,7 +2033,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber68fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber58">
@@ -2048,7 +2049,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber58fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber48">
@@ -2064,7 +2065,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber48fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber38">
@@ -2080,7 +2081,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber38fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber28">
@@ -2096,7 +2097,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber28fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber18">
@@ -2112,7 +2113,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber18fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber08">
@@ -2128,7 +2129,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber08fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber89">
@@ -2144,7 +2145,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumber89fieldNumberKeyTyped"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNumberKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldNumber90">
