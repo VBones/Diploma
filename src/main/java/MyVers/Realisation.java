@@ -1,11 +1,8 @@
 package MyVers;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Этот класс будет наследоваться от TemplateAlgorithm и будет применен паттерн
@@ -53,10 +50,12 @@ public class Realisation {
 
     /**
      *
-     * 1) Сделать поиск вероятностей только для одного города(текущего)(DONE)
-     * 2) Реализовать выбор города из вероятностей (DONE)
-     * 3) Реализовать проверку города, посетил ли муравей его, 
-     *    держать массив для каждого муравья (HALF DONE, bc ants is not added)
+     * 1) РЕФАКТОРИТЬ КОД
+     * 2) Поправить интерфейс
+     * 3) Добавить сохранение матрицы в файл
+     * 4) Вывод ошибок
+     * 5) Создавать новый файл с датой
+     * 6) Перелопатить ввод с файла
      */
     
     /**
@@ -284,90 +283,118 @@ public class Realisation {
         probabilities = new double[CITIES][CITIES];
     }
     
-    public static ArrayList go(int[][] input, int size){
-        Realisation mv = new Realisation(size);
+    public static StringBuilder go(int[][] input, int size){
+        Realisation algo;
         StringBuilder resultTravel;
-        mv.inputMatrix(input, size);
+        StringBuilder minWay = new StringBuilder();
+        int minWayLength = Integer.MAX_VALUE;
         ArrayList<StringBuilder> way = new ArrayList<>();
-        for(int i=0;i<300;i++){
-            mv.runAlgorithm(0);
+        for (int i = 0; i < 10; i++) {
+            algo = new Realisation(size);
+            algo.inputMatrix(input, size);
+            for (int j = 0; j < TIME; j++) {
+                algo.runAlgorithm(0);
+            }
+            resultTravel = new StringBuilder();
+            resultTravel.append("The length is: ").append(algo.lengthOfWay).append(" | Way:");
+            for (Integer city : algo.travel) {
+                resultTravel.append(" -> ").append(city);
+            }
+            resultTravel.append(" -> ").append(algo.travel.get(0));
+            if (algo.lengthOfWay < minWayLength) {
+                minWayLength = algo.lengthOfWay;
+                minWay = resultTravel;
+            }
         }
-        resultTravel = new StringBuilder();
-        resultTravel.append("The length is: ").append(mv.lengthOfWay).append(" | Way:");
-        for (Integer city : mv.travel) {
-            resultTravel.append(" -> ").append(city);
-        }
-        resultTravel.append(" -> ").append(mv.travel.get(0));
-//        way.add(mv.lengthOfWay);
-        way.add(resultTravel);
         
-//        System.out.println(mv.travel);
-//        System.out.println(mv.lengthOfWay+"    mv1-100");
-        Realisation mv2 = new Realisation(size);
-        mv2.inputMatrix(input, size);
-        for(int i=0;i<300;i++){
-            mv2.runAlgorithm(0);
-        }
-        resultTravel = new StringBuilder();
-        resultTravel.append("The length is: ").append(mv2.lengthOfWay).append(" | Way:");
-        for (Integer city : mv2.travel) {
-            resultTravel.append(" -> ").append(city);
-        }
-        resultTravel.append(" -> ").append(mv2.travel.get(0));
-        way.add(resultTravel);
-        
-//        System.out.println(mv2.travel);
-//        way.add(mv2.lengthOfWay);
-//        System.out.println(mv2.lengthOfWay+"    mv2-100");
-        Realisation mv3 = new Realisation(size);
-        mv3.inputMatrix(input, size);
-        for(int i=0;i<300;i++){
-            mv3.runAlgorithm(0);
-        }
-        resultTravel = new StringBuilder();
-        resultTravel.append("The length is: ").append(mv3.lengthOfWay).append(" | Way:");
-        for (Integer city : mv3.travel) {
-            resultTravel.append(" -> ").append(city);
-        }
-        resultTravel.append(" -> ").append(mv3.travel.get(0));
-        way.add(resultTravel);
-        
-//        System.out.println(mv3.travel);
-//        way.add(mv3.lengthOfWay);
-//        System.out.println(mv3.lengthOfWay+"    mv3-100");
-        Realisation mv4 = new Realisation(size);
-        mv4.inputMatrix(input, size);
-        for(int i=0;i<300;i++){
-            mv4.runAlgorithm(0);
-        }
-        resultTravel = new StringBuilder();
-        resultTravel.append("The length is: ").append(mv4.lengthOfWay).append(" | Way:");
-        for (Integer city : mv4.travel) {
-            resultTravel.append(" -> ").append(city);
-        }
-        resultTravel.append(" -> ").append(mv4.travel.get(0));
-        way.add(resultTravel);
-        
-//        System.out.println(mv4.travel);
-//        way.add(mv4.lengthOfWay);
-//        System.out.println(mv4.lengthOfWay+"    mv4-100");
-        Realisation mv5 = new Realisation(size);
-        mv5.inputMatrix(input, size);
-        for(int i=0;i<300;i++){
-            mv5.runAlgorithm(0);
-        }
-        resultTravel = new StringBuilder();
-        resultTravel.append("The length is: ").append(mv5.lengthOfWay).append(" | Way:");
-        for (Integer city : mv5.travel) {
-            resultTravel.append(" -> ").append(city);
-        }
-        resultTravel.append(" -> ").append(mv5.travel.get(0));
-        way.add(resultTravel);
-        
+//        Realisation mv = new Realisation(size);
+//        mv.inputMatrix(input, size);
+//        ArrayList<StringBuilder> way = new ArrayList<>();
+//        for(int i=0;i<TIME;i++){
+//            mv.runAlgorithm(0);
+//        }
+//        resultTravel = new StringBuilder();
+//        resultTravel.append("The length is: ").append(mv.lengthOfWay).append(" | Way:");
+//        for (Integer city : mv.travel) {
+//            resultTravel.append(" -> ").append(city);
+//        }
+//        resultTravel.append(" -> ").append(mv.travel.get(0));
+////        way.add(mv.lengthOfWay);
+//        way.add(resultTravel);
+//        
+////        System.out.println(mv.travel);
+////        System.out.println(mv.lengthOfWay+"    mv1-100");
+//        Realisation mv2 = new Realisation(size);
+//        mv2.inputMatrix(input, size);
+//        for(int i=0;i<TIME;i++){
+//            mv2.runAlgorithm(0);
+//        }
+//        resultTravel = new StringBuilder();
+//        resultTravel.append("The length is: ").append(mv2.lengthOfWay).append(" | Way:");
+//        for (Integer city : mv2.travel) {
+//            resultTravel.append(" -> ").append(city);
+//        }
+//        resultTravel.append(" -> ").append(mv2.travel.get(0));
+//        way.add(resultTravel);
+//        
+////        System.out.println(mv2.travel);
+////        way.add(mv2.lengthOfWay);
+////        System.out.println(mv2.lengthOfWay+"    mv2-100");
+//        Realisation mv3 = new Realisation(size);
+//        mv3.inputMatrix(input, size);
+//        for(int i=0;i<TIME;i++){
+//            mv3.runAlgorithm(0);
+//        }
+//        resultTravel = new StringBuilder();
+//        resultTravel.append("The length is: ").append(mv3.lengthOfWay).append(" | Way:");
+//        for (Integer city : mv3.travel) {
+//            resultTravel.append(" -> ").append(city);
+//        }
+//        resultTravel.append(" -> ").append(mv3.travel.get(0));
+//        way.add(resultTravel);
+//        
+////        System.out.println(mv3.travel);
+////        way.add(mv3.lengthOfWay);
+////        System.out.println(mv3.lengthOfWay+"    mv3-100");
+//        Realisation mv4 = new Realisation(size);
+//        mv4.inputMatrix(input, size);
+//        for(int i=0;i<TIME;i++){
+//            mv4.runAlgorithm(0);
+//        }
+//        resultTravel = new StringBuilder();
+//        resultTravel.append("The length is: ").append(mv4.lengthOfWay).append(" | Way:");
+//        for (Integer city : mv4.travel) {
+//            resultTravel.append(" -> ").append(city);
+//        }
+//        resultTravel.append(" -> ").append(mv4.travel.get(0));
+//        way.add(resultTravel);
+//        
+////        System.out.println(mv4.travel);
+////        way.add(mv4.lengthOfWay);
+////        System.out.println(mv4.lengthOfWay+"    mv4-100");
+//        Realisation mv5 = new Realisation(size);
+//        mv5.inputMatrix(input, size);
+//        for(int i=0;i<TIME;i++){
+//            mv5.runAlgorithm(0);
+//        }
+//        resultTravel = new StringBuilder();
+//        resultTravel.append("The length is: ").append(mv5.lengthOfWay).append(" | Way:");
+//        for (Integer city : mv5.travel) {
+//            resultTravel.append(" -> ").append(city);
+//        }
+//        resultTravel.append(" -> ").append(mv5.travel.get(0));
+//        way.add(resultTravel);
+//        ArrayList<Integer> max = new ArrayList<>();
+//        max.add(mv.lengthOfWay);
+//        max.add(mv2.lengthOfWay);
+//        max.add(mv3.lengthOfWay);
+//        max.add(mv4.lengthOfWay);
+//        max.add(mv5.lengthOfWay);
+//        System.out.println(Collections.min(max));
 //        System.out.println(mv5.travel);
 //        way.add(mv5.lengthOfWay);
 //        System.out.println(mv5.lengthOfWay+"    mv5-100");
         
-        return way;
+        return minWay;
     }
 }

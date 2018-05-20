@@ -5,8 +5,13 @@ import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
@@ -28,6 +33,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
     private ArrayList<JTextField> fields5x5;
     private ArrayList<JTextField> fields10x10;
     private  JTextField[][] tFieldArr;
+    StringBuilder way;
     
     
     /**
@@ -235,7 +241,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
      */
     public void keyTypedEvent(java.awt.event.KeyEvent evt) {
         char vchar = evt.getKeyChar();
-        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE) || (vchar == '0')) {
+        if (!(Character.isDigit(vchar)) || (vchar == KeyEvent.VK_BACKSPACE) || (vchar == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
     }
@@ -255,11 +261,9 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         matrixBox = new javax.swing.JComboBox<>();
         startButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        wayLabel4 = new javax.swing.JLabel();
-        wayLabel5 = new javax.swing.JLabel();
-        wayLabel3 = new javax.swing.JLabel();
-        wayLabel2 = new javax.swing.JLabel();
         wayLabel1 = new javax.swing.JLabel();
+        saveResultButton = new javax.swing.JButton();
+        doneLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         fieldNumber00 = new javax.swing.JTextField();
         fieldNumber01 = new javax.swing.JTextField();
@@ -433,57 +437,42 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         jPanel2.setMaximumSize(new java.awt.Dimension(602, 158));
         jPanel2.setMinimumSize(new java.awt.Dimension(602, 158));
 
-        wayLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        wayLabel4.setMaximumSize(new java.awt.Dimension(470, 16));
-        wayLabel4.setMinimumSize(new java.awt.Dimension(470, 16));
-        wayLabel4.setPreferredSize(new java.awt.Dimension(470, 16));
-
-        wayLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        wayLabel5.setMaximumSize(new java.awt.Dimension(470, 16));
-        wayLabel5.setMinimumSize(new java.awt.Dimension(470, 16));
-        wayLabel5.setPreferredSize(new java.awt.Dimension(470, 16));
-
-        wayLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        wayLabel3.setMaximumSize(new java.awt.Dimension(470, 16));
-        wayLabel3.setMinimumSize(new java.awt.Dimension(470, 16));
-        wayLabel3.setPreferredSize(new java.awt.Dimension(470, 16));
-
-        wayLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        wayLabel2.setMaximumSize(new java.awt.Dimension(470, 16));
-        wayLabel2.setMinimumSize(new java.awt.Dimension(470, 16));
-        wayLabel2.setPreferredSize(new java.awt.Dimension(470, 16));
-
         wayLabel1.setForeground(new java.awt.Color(0, 0, 0));
         wayLabel1.setMaximumSize(new java.awt.Dimension(470, 16));
         wayLabel1.setMinimumSize(new java.awt.Dimension(470, 16));
         wayLabel1.setPreferredSize(new java.awt.Dimension(470, 16));
+
+        saveResultButton.setText("Сохранить результат");
+        saveResultButton.setEnabled(false);
+        saveResultButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveResultButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(wayLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(wayLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(wayLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(wayLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(wayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(wayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(saveResultButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(doneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(wayLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(wayLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(wayLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(wayLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(wayLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveResultButton)
+                    .addComponent(doneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -1702,12 +1691,14 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         JFileChooser fileopen = new JFileChooser();
         int[][] ints = {};
         int d =0;
+        int size=0;
         int ret = fileopen.showDialog(null, "Открыть файл");
         if (ret == JFileChooser.APPROVE_OPTION) {
             File file = fileopen.getSelectedFile();
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 
                 String[] split = reader.readLine().split(" ");
+                size = split.length;
                 ints = new int[split.length][split.length];
 
                 for (int i = 0; i < ints.length; i++) {
@@ -1723,24 +1714,16 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                     split = reader.readLine().split(" ");
                     d = 0;
                 }
+                way = Realisation.go(ints, size);
+                wayLabel1.setText(way.toString());
+                doneLabel.setText("");
+                saveResultButton.setEnabled(true);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(InterfaceAnt.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(InterfaceAnt.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        for (int i = 0; i < ints.length; i++) {
-            for (int j = 0; j < ints[i].length; j++) {
-                System.out.print(ints[i][j] + "\t");
-            }
-            System.out.println();
-        }
-        ArrayList<StringBuilder> way = Realisation.go(ints, 5);
-        wayLabel1.setText(way.get(0).toString());
-        wayLabel2.setText(way.get(1).toString());
-        wayLabel3.setText(way.get(2).toString());
-        wayLabel4.setText(way.get(3).toString());
-        wayLabel5.setText(way.get(4).toString());
     }//GEN-LAST:event_chooseFileButtonActionPerformed
 
     private void random100ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_random100ButtonActionPerformed
@@ -1753,12 +1736,9 @@ public final class InterfaceAnt extends javax.swing.JFrame {
                 inputes[j][i] = inputes[i][j];
             }
         }
-        ArrayList way = Realisation.go(inputes, 100);
-        wayLabel1.setText(way.get(0).toString());
-        wayLabel2.setText(way.get(1).toString());
-        wayLabel3.setText(way.get(2).toString());
-        wayLabel4.setText(way.get(3).toString());
-        wayLabel5.setText(way.get(4).toString());
+        way = Realisation.go(inputes, 100);
+        wayLabel1.setText(way.toString());
+        saveResultButton.setEnabled(true);
     }//GEN-LAST:event_random100ButtonActionPerformed
 
     private void matrixBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_matrixBoxItemStateChanged
@@ -1804,6 +1784,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         // TODO add your handling code here:
+        doneLabel.setText("");
         if (matrixBox.getSelectedIndex() == 0) {
             runAlgo(5);
         } else if (matrixBox.getSelectedIndex() == 1) {
@@ -2035,6 +2016,17 @@ public final class InterfaceAnt extends javax.swing.JFrame {
         // TODO add your handling code here:
         keyTypedEvent(evt);
     }//GEN-LAST:event_fieldNumber89fieldNumberKeyTyped
+
+    private void saveResultButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveResultButtonActionPerformed
+        // TODO add your handling code here:
+        try (FileOutputStream output = new FileOutputStream(new File("solution.txt"))) {
+            output.write(way.toString().getBytes());
+            doneLabel.setText("Done!");
+        } catch (IOException e) {
+            e.printStackTrace();
+            doneLabel.setText("Failed =(");
+        }
+    }//GEN-LAST:event_saveResultButtonActionPerformed
    
    
     /**
@@ -2058,12 +2050,13 @@ public final class InterfaceAnt extends javax.swing.JFrame {
             
         }
 
-        ArrayList way = Realisation.go(inputes, rowscols);
-        wayLabel1.setText(way.get(0).toString());
-        wayLabel2.setText(way.get(1).toString());
-        wayLabel3.setText(way.get(2).toString());
-        wayLabel4.setText(way.get(3).toString());
-        wayLabel5.setText(way.get(4).toString());
+        way = Realisation.go(inputes, rowscols);
+        wayLabel1.setText(way.toString());
+        saveResultButton.setEnabled(true);
+//        wayLabel2.setText(way.get(1).toString());
+//        wayLabel3.setText(way.get(2).toString());
+//        wayLabel4.setText(way.get(3).toString());
+//        wayLabel5.setText(way.get(4).toString());
     }
 
     /**
@@ -2104,6 +2097,7 @@ public final class InterfaceAnt extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton chooseFileButton;
+    private javax.swing.JLabel doneLabel;
     private javax.swing.JTextField fieldNumber00;
     private javax.swing.JTextField fieldNumber01;
     private javax.swing.JTextField fieldNumber02;
@@ -2209,11 +2203,8 @@ public final class InterfaceAnt extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JComboBox<String> matrixBox;
     private javax.swing.JButton random100Button;
+    private javax.swing.JButton saveResultButton;
     private javax.swing.JButton startButton;
     private javax.swing.JLabel wayLabel1;
-    private javax.swing.JLabel wayLabel2;
-    private javax.swing.JLabel wayLabel3;
-    private javax.swing.JLabel wayLabel4;
-    private javax.swing.JLabel wayLabel5;
     // End of variables declaration//GEN-END:variables
 }
