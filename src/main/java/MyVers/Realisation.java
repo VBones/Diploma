@@ -54,7 +54,7 @@ public class Realisation {
      * 2) Поправить интерфейс
      * 3) Добавить сохранение матрицы в файл
      * 4) Вывод ошибок
-     * 5) Создавать новый файл с датой
+     * 5) Создавать новый файл с датой(Готово)
      * 6) Перелопатить ввод с файла
      */
     
@@ -296,7 +296,7 @@ public class Realisation {
                 algo.runAlgorithm(0);
             }
             resultTravel = new StringBuilder();
-            resultTravel.append("The length is: ").append(algo.lengthOfWay).append(" | Way:");
+            resultTravel.append("Длина пути: ").append(algo.lengthOfWay).append(" | Путь:");
             for (Integer city : algo.travel) {
                 resultTravel.append(" -> ").append(city);
             }
