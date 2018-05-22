@@ -1,4 +1,4 @@
-package MyVers;
+package main;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,6 +33,7 @@ public class Algorithm {
      * 4) Вывод ошибок(Готово)
      * 5) Создавать новый файл с датой(Готово)
      * 6) Перелопатить ввод с файла(Готово)
+     * 7) Добавить 
      */
     
     /**
@@ -51,9 +52,6 @@ public class Algorithm {
      * @param currentCity текущий город 
      */
     public void getProbabilityForCity(int currentCity) {
-//        for (int i = 0; i < CITIES; i++) {
-        visitedCities[currentCity] = true;//?IDK
-
         for (int j = 0; j < CITIES; j++) {
             if (visitedCities[j] == false) {
                 probabilities[currentCity][j] = 100 * ((Math.pow(roadPheromone[currentCity][j], ALPHA) / (Math.pow(roadLength[currentCity][j], BETA)))
@@ -61,9 +59,7 @@ public class Algorithm {
             } else {
                 probabilities[currentCity][j] = 0;
             }
-            //System.out.print(probabilities[currentCity][j] + " ");
         }
-        //System.out.println("");
     }
 
     /**
@@ -78,17 +74,13 @@ public class Algorithm {
             probabsForChoose.add(probabilities[currentCity][i]);
         }
         Collections.sort(probabsForChoose);
-//        System.out.println(probabsForChoose);
 
         Random random = new Random();
         int randomValue = random.nextInt(100);
         double city = Collections.max(probabsForChoose);
         double ender = probabsForChoose.get(1);
-        //System.out.println("first ender : "+ender);
         for (int i = 0; i < CITIES; i++) {
-            //System.out.println("текущий i: "+i);
             //Если i = последнему, выбираем последний город
-            //System.out.println(probabsForChoose.get(i)+" and "+ender);
             if (i == CITIES - 1) {
                 city = probabsForChoose.get(probabsForChoose.size() - 1);
                 break;
@@ -104,7 +96,6 @@ public class Algorithm {
                 ender = ender + probabsForChoose.get(i + 2);
             }
         }//end for
-        //System.out.println("Value of city: " + city);
         for (int i = 0; i < CITIES; i++) {
             //Ищем город по вероятности
             //Если вероятность совпала, выбираем этот город
@@ -123,9 +114,8 @@ public class Algorithm {
      * @param currentCity текущий город
      */
     public void updateSumProbability(int currentCity) {
-        visitedCities[currentCity] = true;//FOR EXAMPLE
+        visitedCities[currentCity] = true;
 
-        //System.out.println("Visited cities: " + Arrays.toString(visitedCities));
         for (int k = 0; k < CITIES; k++) {
             sumProbability[k] = 0;
         }
@@ -135,11 +125,6 @@ public class Algorithm {
                 sumProbability[i] = sumProbability[i] + (Math.pow(roadPheromone[i][j], ALPHA) / Math.pow(roadLength[i][j], BETA));
             }
         }
-        //Для дебага
-//            for (i = 0; i < CITIES; i++) {
-//                System.out.println("Summary probabilities to visit " + i + " city: " + sumProbability[i]);
-//            }
-
     }
     
     /**
@@ -151,7 +136,7 @@ public class Algorithm {
         int selectedCity = startingCity;
         travel = new ArrayList<>();
         travel.add(startingCity);
-        //System.out.println(Arrays.toString(visitedCities));
+        
         while (hasMoreCitiesToGo()) {
             updateSumProbability(selectedCity);
             getProbabilityForCity(selectedCity);
@@ -159,26 +144,10 @@ public class Algorithm {
             if (selectedCity > 999) {
                 break;
             }
-//            System.out.println("THE NEXT CITY IS: " + selectedCity + "[0-" + (CITIES - 1) + "]");
             travel.add(selectedCity);
-            //System.out.println("-----------------------------------------------------------------");
         }
         getCompletedLength(travel.get(0), travel.get(travel.size() - 1));
-//        System.out.print("THE TRAVEL IS:");
-//        for (Integer city : travel) {
-//            System.out.print(" -> " + city);
-//        }
-//        System.out.print(" -> " + travel.get(0));
         updatePheromones();
-//        System.out.println("");
-        //System.out.println("PHEROMONES:");
-//        for (int k = 0; k < CITIES; k++) {
-//            for (int j = 0; j < CITIES; j++) {
-//                System.out.printf("%.2f\t", roadPheromone[k][j]);
-//            }
-//            System.out.println("");
-//        }
-        //System.out.println("LENGTH OF WAY: "+ lengthOfWay);
     }
     
     /**
@@ -251,13 +220,17 @@ public class Algorithm {
         visitedCities = new boolean[CITIES];
         probabilities = new double[CITIES][CITIES];
     }
-    
+    /**
+     * Находит кратчайший путь
+     * @param input введенная матрица
+     * @param size размерность матрицы
+     * @return кратчайший путь
+     */
     public static StringBuilder getShortestWay(int[][] input, int size) {
         Algorithm algo;
         StringBuilder resultTravel;
         StringBuilder minWay = new StringBuilder();
         int minWayLength = Integer.MAX_VALUE;
-//        ArrayList<StringBuilder> way = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             algo = new Algorithm(size);
             algo.inputMatrix(input, size);
