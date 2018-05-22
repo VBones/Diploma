@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
@@ -28,10 +29,9 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
     private boolean checkBoxFlag = false;
     private ArrayList<JTextField> inputFields;
     private ArrayList<JTextField> dependedFields;
-    private ArrayList<JTextField> fields5x5;
-    private ArrayList<JTextField> fields10x10;
-    private  JTextField[][] tFieldArr;
-    StringBuilder way;
+    private JTextField[][] tFieldArr;
+    private int[][] matrixValues;
+    private StringBuilder way;
     
     
     /**
@@ -152,35 +152,13 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         tFieldArr[9][7] = fieldNumber97;
         tFieldArr[9][8] = fieldNumber98;
         tFieldArr[9][9] = fieldNumber99;
-        
+
         for (int i = 0; i < 9; i++) {
             for (int j = i + 1; j < 10; j++) {
-                    inputFields.add(tFieldArr[i][j]);
-                    dependedFields.add(tFieldArr[j][i]);
+                inputFields.add(tFieldArr[i][j]);
+                dependedFields.add(tFieldArr[j][i]);
             }
         }
-//        inputFields.add(fieldNumber01);
-//        inputFields.add(fieldNumber02);
-//        inputFields.add(fieldNumber03);
-//        inputFields.add(fieldNumber04);
-//        inputFields.add(fieldNumber12);
-//        inputFields.add(fieldNumber13);
-//        inputFields.add(fieldNumber14);
-//        inputFields.add(fieldNumber23);
-//        inputFields.add(fieldNumber24);
-//        inputFields.add(fieldNumber34);
-        
-//        dependedFields.add(fieldNumber10);
-//        dependedFields.add(fieldNumber20);
-//        dependedFields.add(fieldNumber30);
-//        dependedFields.add(fieldNumber40);
-//        dependedFields.add(fieldNumber21);
-//        dependedFields.add(fieldNumber31);
-//        dependedFields.add(fieldNumber41);
-//        dependedFields.add(fieldNumber32);
-//        dependedFields.add(fieldNumber42);
-//        dependedFields.add(fieldNumber43);
-        
     }
     /**
      * Добавляет слушателей событий для полей ввода
@@ -354,12 +332,14 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         fieldNumber99 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(472, 500));
-        setPreferredSize(new java.awt.Dimension(472, 500));
+        setMinimumSize(new java.awt.Dimension(465, 500));
+        setPreferredSize(new java.awt.Dimension(465, 468));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setMinimumSize(new java.awt.Dimension(465, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(472, 40));
 
         chooseFileButton.setText("Выбрать файл");
         chooseFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -388,8 +368,8 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
 
         startButton.setText("СТАРТ");
         startButton.setMaximumSize(new java.awt.Dimension(90, 32));
-        startButton.setMinimumSize(new java.awt.Dimension(90, 32));
-        startButton.setPreferredSize(new java.awt.Dimension(90, 32));
+        startButton.setMinimumSize(new java.awt.Dimension(88, 32));
+        startButton.setPreferredSize(new java.awt.Dimension(88, 32));
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
@@ -407,8 +387,8 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(matrixBox, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,8 +403,8 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setMaximumSize(new java.awt.Dimension(1000, 300));
-        jPanel2.setMinimumSize(new java.awt.Dimension(470, 110));
-        jPanel2.setPreferredSize(new java.awt.Dimension(470, 110));
+        jPanel2.setMinimumSize(new java.awt.Dimension(465, 110));
+        jPanel2.setPreferredSize(new java.awt.Dimension(465, 110));
 
         resultLabel.setForeground(new java.awt.Color(0, 0, 0));
         resultLabel.setMaximumSize(new java.awt.Dimension(470, 16));
@@ -1462,7 +1442,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
                         .addComponent(fieldNumber98, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(fieldNumber99, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1659,11 +1639,8 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1682,7 +1659,6 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
      * @param evt событие
      */
     private void chooseFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseFileButtonActionPerformed
-        // TODO add your handling code here:
         saveResultButton.setEnabled(false);
         int[][] matrix;
         int elementsTaken = 0;
@@ -1692,9 +1668,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         int openFileResult = fileOpener.showDialog(null, "Открыть файл");
         
         if (openFileResult == JFileChooser.APPROVE_OPTION) {
-            
             File file = fileOpener.getSelectedFile();
-            
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 String[] line = reader.readLine().split(" ");
                 size = line.length;
@@ -1711,15 +1685,14 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
                     if (i == matrix.length - 1) {
                         break;
                     }
-                    
                     line = reader.readLine().split(" ");
-                    
                     if (line.length != size) {
                         throw new Exception("<html>Неверное количество элементов матрицы!"
                                 + "<br>Требуется " + size + " элементов! У вас: " + line.length + "!</html>");
                     }
                     elementsTaken = 0;
                 }
+                matrixValues = matrix;
                 way = Algorithm.getShortestWay(matrix, size);
                 saveResultButton.setEnabled(true);
                 resultLabel.setText(way.toString());
@@ -1737,7 +1710,6 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_chooseFileButtonActionPerformed
 
     private void random100ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_random100ButtonActionPerformed
-        // TODO add your handling code here:
         try {
             doneLabel.setText("");
             Random rnd = new Random();
@@ -1748,6 +1720,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
                     randomMatrix[j][i] = randomMatrix[i][j];
                 }
             }
+            matrixValues = randomMatrix;
             way = Algorithm.getShortestWay(randomMatrix, 100);
             resultLabel.setText(way.toString());
             saveResultButton.setEnabled(true);
@@ -1770,6 +1743,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
                         tFieldArr[r][c].setText("");
                     }
                 }
+                doneLabel.setText("");
             } else if (matrixBox.getSelectedIndex() == 1) {
                 for (int r = 0; r < 10; r++) {
                     for (int c = 5; c < 10; c++) {
@@ -1784,6 +1758,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
                         }
                     }
                 }
+                doneLabel.setText("");
             }
             setSize(new Dimension(this.getWidth() + 1, this.getHeight() + 1));
             setSize(new Dimension(this.getWidth() - 1, this.getHeight() - 1));
@@ -1792,7 +1767,6 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_matrixBoxItemStateChanged
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        // TODO add your handling code here:
         try {
             doneLabel.setText("");
             if (matrixBox.getSelectedIndex() == 0) {
@@ -1814,17 +1788,35 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
      * @param evt 
      */
     private void saveResultButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveResultButtonActionPerformed
-        // TODO add your handling code here:
-        SimpleDateFormat datef = new SimpleDateFormat("dd.MM.yyyy' 'hh-mm-ss a");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy' 'hh-mm-ss a");
         Date date = new Date();
-        String currentDate = datef.format(date);
+        String currentDate = dateFormat.format(date);
+        saveWayToFile(currentDate);
+        saveMatrixToFile(currentDate);
+    }//GEN-LAST:event_saveResultButtonActionPerformed
+
+    private void saveMatrixToFile(String currentDate) {
+        try (FileOutputStream output = new FileOutputStream(new File("Матрица решения " + currentDate + ".txt"))) {
+            for (int i = 0; i < matrixValues.length; i++) {
+                for (int j = 0; j < matrixValues.length; j++) {
+                    output.write(((Integer.toString(matrixValues[i][j])) + "\t").getBytes());
+                }
+                output.write(System.getProperty("line.separator").getBytes());
+            }
+            doneLabel.setText("Готово!");
+        } catch (IOException e) {
+            doneLabel.setText("Произошла ошибка =(");
+        }
+    }
+
+    private void saveWayToFile(String currentDate) {
         try (FileOutputStream output = new FileOutputStream(new File("Решение " + currentDate + ".txt"))) {
             output.write(way.toString().getBytes());
             doneLabel.setText("Готово!");
         } catch (IOException e) {
             doneLabel.setText("Произошла ошибка =(");
         }
-    }//GEN-LAST:event_saveResultButtonActionPerformed
+    }
    
    
     /**
@@ -1833,24 +1825,26 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
      * @throws NumberFormatException если не удастся преобразовать String в Integer
      */
     public void runAlgorithm(int rowscols) {
-        int[][] randomMatrix = new int[rowscols][rowscols];
+        int[][] matrix = new int[rowscols][rowscols];
+        int r = 0;
+        int c = 0;
         try {
-            for (int r = 0; r < rowscols; r++) {
-                for (int c = 0; c < rowscols; c++) {
+            for (r = 0; r < rowscols; r++) {
+                for (c = 0; c < rowscols; c++) {
                     if ((r == c) | (tFieldArr[r][c].getText().length() != 0 && Integer.parseInt(tFieldArr[r][c].getText()) != 0)) {
-                        randomMatrix[r][c] = Integer.parseInt(tFieldArr[r][c].getText());
+                        matrix[r][c] = Integer.parseInt(tFieldArr[r][c].getText());
                     } else {
-                        randomMatrix[r][c] = 1;
+                        matrix[r][c] = 1;
                     }
                 }
             }
+            matrixValues = matrix;
+            way = Algorithm.getShortestWay(matrix, rowscols);
+            saveResultButton.setEnabled(true);
+            resultLabel.setText(way.toString());
         } catch (NumberFormatException e) {
-            resultLabel.setText(e.getMessage());
+            resultLabel.setText("Слишком большое значение в ячейке [" + (r + 1) + "][" + (c + 1) + "]");
         }
-
-        way = Algorithm.getShortestWay(randomMatrix, rowscols);
-        saveResultButton.setEnabled(true);
-        resultLabel.setText(way.toString());
     }
 
     /**

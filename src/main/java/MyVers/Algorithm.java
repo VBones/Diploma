@@ -9,28 +9,28 @@ import java.util.Random;
  */
 public class Algorithm {
 
-    public static final double ALPHA = 1;//жадность, где 0 - выбор где поближе
-    public static final double BETA = 1;//если = 0, то игнорируем расстояние
-    public static final double P = 0.2;//коэфициент испарения феромонов
-    public static final double Q = 300;//коэфициент для нахождения феромона нового
-    static int CITIES;
-    static final int TIME = 200;
+    private static final double ALPHA = 1;//жадность, где 0 - выбор где поближе
+    private static final double BETA = 1;//если = 0, то игнорируем расстояние
+    private static final double P = 0.2;//коэфициент испарения феромонов
+    private static final double Q = 300;//коэфициент для нахождения феромона нового
+    private static int CITIES;
+    private static final int TIME = 200;
 
-    int[][] roadLength;
-    double[][] roadPheromone;
-    double[][] probabilities;
-    double[] sumProbability;
-    boolean[] visitedCities;
-    ArrayList<Integer> travel;
-    public int lengthOfWay;
+    private int[][] roadLength;
+    private double[][] roadPheromone;
+    private double[][] probabilities;
+    private double[] sumProbability;
+    private boolean[] visitedCities;
+    private ArrayList<Integer> travel;
+    private int lengthOfWay;
 
 
     /**
      *
      * 1) РЕФАКТОРИТЬ КОД
      * 2) Поправить интерфейс
-     * 3) Добавить сохранение матрицы в файл
-     * 4) Вывод ошибок
+     * 3) Добавить сохранение матрицы в файл(Готово)
+     * 4) Вывод ошибок(Готово)
      * 5) Создавать новый файл с датой(Готово)
      * 6) Перелопатить ввод с файла(Готово)
      */
@@ -156,7 +156,7 @@ public class Algorithm {
             updateSumProbability(selectedCity);
             getProbabilityForCity(selectedCity);
             selectedCity = chooseCity(selectedCity);
-            if (selectedCity == 999) {
+            if (selectedCity > 999) {
                 break;
             }
 //            System.out.println("THE NEXT CITY IS: " + selectedCity + "[0-" + (CITIES - 1) + "]");
@@ -267,9 +267,9 @@ public class Algorithm {
             resultTravel = new StringBuilder();
             resultTravel.append("Длина пути: ").append(algo.lengthOfWay).append(" | Путь:");
             for (Integer city : algo.travel) {
-                resultTravel.append(" -> ").append(city);
+                resultTravel.append(" -> ").append(city+1);
             }
-            resultTravel.append(" -> ").append(algo.travel.get(0));
+            resultTravel.append(" -> ").append(algo.travel.get(0)+1);
             if (algo.lengthOfWay < minWayLength) {
                 minWayLength = algo.lengthOfWay;
                 minWay = resultTravel;
