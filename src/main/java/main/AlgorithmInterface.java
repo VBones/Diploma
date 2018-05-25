@@ -32,6 +32,11 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
     private JTextField[][] tFieldArr;
     private int[][] matrixValues;
     private StringBuilder way;
+    private StringBuilder way2;
+    private boolean isFirstDone;
+    private boolean isSecondDone;
+    private int[][] randomMatrix;
+    private boolean isDone;
     
     
     /**
@@ -178,12 +183,12 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         changingField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                dependedField.setText(changingField.getText());
+//                dependedField.setText(changingField.getText());
             }
             
             @Override
             public void removeUpdate(DocumentEvent e) {
-                dependedField.setText(changingField.getText());
+//                dependedField.setText(changingField.getText());
             }
             
             @Override
@@ -225,10 +230,12 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         random100Button = new javax.swing.JButton();
         matrixBox = new javax.swing.JComboBox<>();
         startButton = new javax.swing.JButton();
+        randomNumber = new javax.swing.JTextField();
         resultPanel = new javax.swing.JPanel();
         resultLabel = new javax.swing.JLabel();
         saveResultButton = new javax.swing.JButton();
         doneLabel = new javax.swing.JLabel();
+        expectedLabel = new javax.swing.JLabel();
         matrixPanel = new javax.swing.JPanel();
         fieldNumber00 = new javax.swing.JTextField();
         fieldNumber01 = new javax.swing.JTextField();
@@ -333,7 +340,6 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(465, 500));
-        setPreferredSize(new java.awt.Dimension(465, 468));
         setResizable(false);
 
         functionalPanel.setBackground(new java.awt.Color(204, 204, 204));
@@ -348,7 +354,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             }
         });
 
-        random100Button.setText("Сгенерировать 100х100");
+        random100Button.setText("Сгенерировать");
         random100Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 random100ButtonActionPerformed(evt);
@@ -376,6 +382,12 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             }
         });
 
+        randomNumber.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout functionalPanelLayout = new javax.swing.GroupLayout(functionalPanel);
         functionalPanel.setLayout(functionalPanelLayout);
         functionalPanelLayout.setHorizontalGroup(
@@ -383,21 +395,23 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             .addGroup(functionalPanelLayout.createSequentialGroup()
                 .addComponent(chooseFileButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(randomNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(random100Button)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(matrixBox, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                .addContainerGap())
         );
         functionalPanelLayout.setVerticalGroup(
             functionalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(random100Button, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(chooseFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(randomNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(matrixBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(random100Button, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(chooseFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         resultPanel.setBackground(new java.awt.Color(204, 204, 204));
@@ -419,30 +433,42 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             }
         });
 
+        expectedLabel.setForeground(new java.awt.Color(0, 0, 0));
+        expectedLabel.setMaximumSize(new java.awt.Dimension(470, 16));
+        expectedLabel.setMinimumSize(new java.awt.Dimension(470, 16));
+        expectedLabel.setPreferredSize(new java.awt.Dimension(470, 16));
+
         javax.swing.GroupLayout resultPanelLayout = new javax.swing.GroupLayout(resultPanel);
         resultPanel.setLayout(resultPanelLayout);
         resultPanelLayout.setHorizontalGroup(
             resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(resultPanelLayout.createSequentialGroup()
-                .addComponent(resultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(resultPanelLayout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(saveResultButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(doneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(expectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(saveResultButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(doneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                    .addGroup(resultPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(resultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         resultPanelLayout.setVerticalGroup(
             resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(resultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(saveResultButton)
-                    .addComponent(doneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(62, 62, 62))
+                .addComponent(resultLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(expectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(resultPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(saveResultButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(doneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         matrixPanel.setFocusable(false);
@@ -474,12 +500,14 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             }
         });
 
-        fieldNumber10.setEditable(false);
-        fieldNumber10.setFocusable(false);
         fieldNumber10.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber10.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber10.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber10.setRequestFocusEnabled(false);
+        fieldNumber10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
         fieldNumber11.setEditable(false);
         fieldNumber11.setText("0");
@@ -516,19 +544,23 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             }
         });
 
-        fieldNumber20.setEditable(false);
-        fieldNumber20.setFocusable(false);
         fieldNumber20.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber20.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber20.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber20.setRequestFocusEnabled(false);
+        fieldNumber20.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber21.setEditable(false);
-        fieldNumber21.setFocusable(false);
         fieldNumber21.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber21.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber21.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber21.setRequestFocusEnabled(false);
+        fieldNumber21.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
         fieldNumber22.setEditable(false);
         fieldNumber22.setText("0");
@@ -555,26 +587,32 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         fieldNumber33.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber33.setRequestFocusEnabled(false);
 
-        fieldNumber32.setEditable(false);
-        fieldNumber32.setFocusable(false);
         fieldNumber32.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber32.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber32.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber32.setRequestFocusEnabled(false);
+        fieldNumber32.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber31.setEditable(false);
-        fieldNumber31.setFocusable(false);
         fieldNumber31.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber31.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber31.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber31.setRequestFocusEnabled(false);
+        fieldNumber31.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber30.setEditable(false);
-        fieldNumber30.setFocusable(false);
         fieldNumber30.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber30.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber30.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber30.setRequestFocusEnabled(false);
+        fieldNumber30.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
         fieldNumber04.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber04.setMinimumSize(new java.awt.Dimension(34, 24));
@@ -612,33 +650,41 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             }
         });
 
-        fieldNumber40.setEditable(false);
-        fieldNumber40.setFocusable(false);
         fieldNumber40.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber40.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber40.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber40.setRequestFocusEnabled(false);
+        fieldNumber40.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber41.setEditable(false);
-        fieldNumber41.setFocusable(false);
         fieldNumber41.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber41.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber41.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber41.setRequestFocusEnabled(false);
+        fieldNumber41.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber42.setEditable(false);
-        fieldNumber42.setFocusable(false);
         fieldNumber42.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber42.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber42.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber42.setRequestFocusEnabled(false);
+        fieldNumber42.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber43.setEditable(false);
-        fieldNumber43.setFocusable(false);
         fieldNumber43.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber43.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber43.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber43.setRequestFocusEnabled(false);
+        fieldNumber43.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
         fieldNumber44.setEditable(false);
         fieldNumber44.setText("0");
@@ -701,82 +747,104 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         fieldNumber55.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber55.setRequestFocusEnabled(false);
 
-        fieldNumber54.setEditable(false);
-        fieldNumber54.setFocusable(false);
         fieldNumber54.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber54.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber54.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber54.setRequestFocusEnabled(false);
+        fieldNumber54.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber53.setEditable(false);
-        fieldNumber53.setFocusable(false);
         fieldNumber53.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber53.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber53.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber53.setRequestFocusEnabled(false);
+        fieldNumber53.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber52.setEditable(false);
-        fieldNumber52.setFocusable(false);
         fieldNumber52.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber52.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber52.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber52.setRequestFocusEnabled(false);
+        fieldNumber52.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber50.setEditable(false);
-        fieldNumber50.setFocusable(false);
         fieldNumber50.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber50.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber50.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber50.setRequestFocusEnabled(false);
+        fieldNumber50.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber51.setEditable(false);
-        fieldNumber51.setFocusable(false);
         fieldNumber51.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber51.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber51.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber51.setRequestFocusEnabled(false);
+        fieldNumber51.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber65.setEditable(false);
-        fieldNumber65.setFocusable(false);
         fieldNumber65.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber65.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber65.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber65.setRequestFocusEnabled(false);
+        fieldNumber65.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber64.setEditable(false);
-        fieldNumber64.setFocusable(false);
         fieldNumber64.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber64.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber64.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber64.setRequestFocusEnabled(false);
+        fieldNumber64.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber63.setEditable(false);
-        fieldNumber63.setFocusable(false);
         fieldNumber63.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber63.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber63.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber63.setRequestFocusEnabled(false);
+        fieldNumber63.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber62.setEditable(false);
-        fieldNumber62.setFocusable(false);
         fieldNumber62.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber62.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber62.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber62.setRequestFocusEnabled(false);
+        fieldNumber62.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber61.setEditable(false);
-        fieldNumber61.setFocusable(false);
         fieldNumber61.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber61.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber61.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber61.setRequestFocusEnabled(false);
+        fieldNumber61.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber60.setEditable(false);
-        fieldNumber60.setFocusable(false);
         fieldNumber60.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber60.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber60.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber60.setRequestFocusEnabled(false);
+        fieldNumber60.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
         fieldNumber06.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber06.setMinimumSize(new java.awt.Dimension(34, 24));
@@ -840,54 +908,68 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
         fieldNumber66.setPreferredSize(new java.awt.Dimension(34, 24));
         fieldNumber66.setRequestFocusEnabled(false);
 
-        fieldNumber74.setEditable(false);
-        fieldNumber74.setFocusable(false);
         fieldNumber74.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber74.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber74.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber74.setRequestFocusEnabled(false);
+        fieldNumber74.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber76.setEditable(false);
-        fieldNumber76.setFocusable(false);
         fieldNumber76.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber76.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber76.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber76.setRequestFocusEnabled(false);
+        fieldNumber76.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber75.setEditable(false);
-        fieldNumber75.setFocusable(false);
         fieldNumber75.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber75.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber75.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber75.setRequestFocusEnabled(false);
+        fieldNumber75.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber70.setEditable(false);
-        fieldNumber70.setFocusable(false);
         fieldNumber70.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber70.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber70.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber70.setRequestFocusEnabled(false);
+        fieldNumber70.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber71.setEditable(false);
-        fieldNumber71.setFocusable(false);
         fieldNumber71.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber71.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber71.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber71.setRequestFocusEnabled(false);
+        fieldNumber71.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber72.setEditable(false);
-        fieldNumber72.setFocusable(false);
         fieldNumber72.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber72.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber72.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber72.setRequestFocusEnabled(false);
+        fieldNumber72.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber73.setEditable(false);
-        fieldNumber73.setFocusable(false);
         fieldNumber73.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber73.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber73.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber73.setRequestFocusEnabled(false);
+        fieldNumber73.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
         fieldNumber77.setEditable(false);
         fieldNumber77.setText("0");
@@ -960,61 +1042,77 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             }
         });
 
-        fieldNumber86.setEditable(false);
-        fieldNumber86.setFocusable(false);
         fieldNumber86.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber86.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber86.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber86.setRequestFocusEnabled(false);
+        fieldNumber86.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber87.setEditable(false);
-        fieldNumber87.setFocusable(false);
         fieldNumber87.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber87.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber87.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber87.setRequestFocusEnabled(false);
+        fieldNumber87.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber80.setEditable(false);
-        fieldNumber80.setFocusable(false);
         fieldNumber80.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber80.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber80.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber80.setRequestFocusEnabled(false);
+        fieldNumber80.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber81.setEditable(false);
-        fieldNumber81.setFocusable(false);
         fieldNumber81.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber81.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber81.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber81.setRequestFocusEnabled(false);
+        fieldNumber81.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber82.setEditable(false);
-        fieldNumber82.setFocusable(false);
         fieldNumber82.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber82.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber82.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber82.setRequestFocusEnabled(false);
+        fieldNumber82.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber83.setEditable(false);
-        fieldNumber83.setFocusable(false);
         fieldNumber83.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber83.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber83.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber83.setRequestFocusEnabled(false);
+        fieldNumber83.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber84.setEditable(false);
-        fieldNumber84.setFocusable(false);
         fieldNumber84.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber84.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber84.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber84.setRequestFocusEnabled(false);
+        fieldNumber84.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber85.setEditable(false);
-        fieldNumber85.setFocusable(false);
         fieldNumber85.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber85.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber85.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber85.setRequestFocusEnabled(false);
+        fieldNumber85.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
         fieldNumber88.setEditable(false);
         fieldNumber88.setText("0");
@@ -1177,68 +1275,86 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
             }
         });
 
-        fieldNumber90.setEditable(false);
-        fieldNumber90.setFocusable(false);
         fieldNumber90.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber90.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber90.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber90.setRequestFocusEnabled(false);
+        fieldNumber90.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber91.setEditable(false);
-        fieldNumber91.setFocusable(false);
         fieldNumber91.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber91.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber91.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber91.setRequestFocusEnabled(false);
+        fieldNumber91.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber92.setEditable(false);
-        fieldNumber92.setFocusable(false);
         fieldNumber92.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber92.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber92.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber92.setRequestFocusEnabled(false);
+        fieldNumber92.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber93.setEditable(false);
-        fieldNumber93.setFocusable(false);
         fieldNumber93.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber93.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber93.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber93.setRequestFocusEnabled(false);
+        fieldNumber93.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber94.setEditable(false);
-        fieldNumber94.setFocusable(false);
         fieldNumber94.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber94.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber94.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber94.setRequestFocusEnabled(false);
+        fieldNumber94.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber95.setEditable(false);
-        fieldNumber95.setFocusable(false);
         fieldNumber95.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber95.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber95.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber95.setRequestFocusEnabled(false);
+        fieldNumber95.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber96.setEditable(false);
-        fieldNumber96.setFocusable(false);
         fieldNumber96.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber96.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber96.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber96.setRequestFocusEnabled(false);
+        fieldNumber96.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber97.setEditable(false);
-        fieldNumber97.setFocusable(false);
         fieldNumber97.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber97.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber97.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber97.setRequestFocusEnabled(false);
+        fieldNumber97.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
-        fieldNumber98.setEditable(false);
-        fieldNumber98.setFocusable(false);
         fieldNumber98.setMaximumSize(new java.awt.Dimension(34, 24));
         fieldNumber98.setMinimumSize(new java.awt.Dimension(34, 24));
         fieldNumber98.setPreferredSize(new java.awt.Dimension(34, 24));
-        fieldNumber98.setRequestFocusEnabled(false);
+        fieldNumber98.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNumberKeyTyped(evt);
+            }
+        });
 
         fieldNumber99.setEditable(false);
         fieldNumber99.setText("0");
@@ -1660,6 +1776,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
      */
     private void chooseFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseFileButtonActionPerformed
         saveResultButton.setEnabled(false);
+        expectedLabel.setVisible(false);
         int[][] matrix;
         int elementsTaken = 0;
         int size;
@@ -1712,17 +1829,67 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
     private void random100ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_random100ButtonActionPerformed
         try {
             doneLabel.setText("");
+            expectedLabel.setText("");
+            expectedLabel.setVisible(true);
+            int inSize = Integer.parseInt(randomNumber.getText());
+            if (inSize < 5) {
+                inSize = 5;
+            }
             Random rnd = new Random();
-            int[][] randomMatrix = new int[100][100];
-            for (int i = 0; i < 99; i++) {
-                for (int j = i + 1; j < 100; j++) {
-                    randomMatrix[i][j] = rnd.nextInt(200) + 1;
-                    randomMatrix[j][i] = randomMatrix[i][j];
+            randomMatrix = new int[inSize][inSize];
+            boolean[] used = new boolean[inSize];
+            //Заполняем матрицу рандомными большими числами
+            for (int i = 0; i < randomMatrix.length; i++) {
+                for (int j = 0; j < randomMatrix.length; j++) {
+                    if (i != j) {
+                        randomMatrix[i][j] = rnd.nextInt(500) + 500;
+                    } else {
+                        randomMatrix[i][j] = 0;
+                    }
                 }
             }
+            StringBuilder expectedWay = new StringBuilder();
+            int to = 0;
+            //Генерируем случайный путь
+            expectedWay.append("Подготовленный заранее путь: "+(to + 1)+" -> ");
+            for (int i = 0; i < inSize; i++) {
+                if (i == inSize - 1) {
+                    randomMatrix[to][0] = 1;
+                    expectedWay.append((to + 1));
+                    break;
+                }
+                while (true) {
+                    int number = rnd.nextInt(inSize - 1) + 1;
+                    if (randomMatrix[to][number] != 0 && used[number] == false && randomMatrix[number][to] != 1) {
+                        randomMatrix[to][number] = 1;
+                        used[number] = true;
+                        expectedWay.append((number + 1)+" -> ");
+                        to = number;
+                        break;
+                    }
+                }
+            }
+//            System.out.println(expectedWay.toString());
+            way = Algorithm.getShortestWay(randomMatrix, inSize);
+//            System.out.println(way.toString());
+            isDone = true;
+//            
+//            ArrayList<Integer> listTravel = Algorithm.getLiTravel();
+//            for (int i = 0; i < listTravel.size(); i++) {
+//                if (i == listTravel.size() - 1) {
+//                    randomMatrix[listTravel.get(i)][listTravel.get(0)] = 1;
+//                } else {
+//                    randomMatrix[listTravel.get(i)][listTravel.get(i + 1)] = 1;
+//                }
+//            }ssss
+
+
+
+
             matrixValues = randomMatrix;
-            way = Algorithm.getShortestWay(randomMatrix, 100);
-            resultLabel.setText(way.toString());
+//            way = Algorithm.getShortestWay(matrixValues, inSize);
+            resultLabel.setText(expectedWay.toString());
+            expectedLabel.setText(way.toString());
             saveResultButton.setEnabled(true);
         } catch (Exception e) {
             resultLabel.setText(e.getMessage());
@@ -1767,6 +1934,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         try {
+            expectedLabel.setVisible(false);
             doneLabel.setText("");
             if (matrixBox.getSelectedIndex() == 0) {
                 runAlgorithm(5);
@@ -1883,6 +2051,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton chooseFileButton;
     private javax.swing.JLabel doneLabel;
+    private javax.swing.JLabel expectedLabel;
     private javax.swing.JTextField fieldNumber00;
     private javax.swing.JTextField fieldNumber01;
     private javax.swing.JTextField fieldNumber02;
@@ -1987,6 +2156,7 @@ public final class AlgorithmInterface extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> matrixBox;
     private javax.swing.JPanel matrixPanel;
     private javax.swing.JButton random100Button;
+    private javax.swing.JTextField randomNumber;
     private javax.swing.JLabel resultLabel;
     private javax.swing.JPanel resultPanel;
     private javax.swing.JButton saveResultButton;

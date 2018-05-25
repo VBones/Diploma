@@ -23,6 +23,7 @@ public class Algorithm {
     private boolean[] visitedCities;
     private ArrayList<Integer> travel;
     private int lengthOfWay;
+    private static ArrayList<Integer> liTravel;
 
 
     /**
@@ -33,7 +34,14 @@ public class Algorithm {
      * 4) Вывод ошибок(Готово)
      * 5) Создавать новый файл с датой(Готово)
      * 6) Перелопатить ввод с файла(Готово)
-     * 7) Добавить 
+     * 7) Сделать не симметричную матрицу(Готово)
+     * 8) Сделать рандом - выбрать путь с единицами, и при каждой генерации просто менять
+     *    места с единицами, чтобы длина путя была всегда одна и та же как и путь.(Готово)
+     * 9) Сделать поле с выбором размерности рандомной матрицы
+     * 10) Большие числа рандомной матрицы должны быть одинаковы всегда, то-есть предопределены.(Готово)
+     * 11) Сначала заполнять рандомными кабанами матрицу а потом просто единички поставить в места,
+     *     предопределенные по пути(Готово)
+     * 12) Смещение единичек в рандомной матрице
      */
     
     /**
@@ -179,7 +187,7 @@ public class Algorithm {
      * @param lastCity последний город
      */
     public void getCompletedLength(int firstCity, int lastCity) {
-        lengthOfWay += roadLength[firstCity][lastCity];
+        lengthOfWay += roadLength[lastCity][firstCity];
     }
     
     /**
@@ -205,12 +213,17 @@ public class Algorithm {
                 roadLength[r][c] = inputs[r][c];
             }
         }
-        for (int i = 0; i < size-1; i++) {
-            for (int j = i + 1; j < size; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 roadPheromone[i][j] = rnd.nextInt(2) + 1;
-                roadPheromone[j][i] = roadPheromone[i][j];
             }
         }
+//        for (int i = 0; i < size-1; i++) {
+//            for (int j = i + 1; j < size; j++) {
+//                roadPheromone[i][j] = rnd.nextInt(2) + 1;
+//                roadPheromone[j][i] = roadPheromone[i][j];
+//            }
+//        }
     }
     
 
@@ -245,9 +258,23 @@ public class Algorithm {
             resultTravel.append(" -> ").append(algo.travel.get(0)+1);
             if (algo.lengthOfWay < minWayLength) {
                 minWayLength = algo.lengthOfWay;
+                liTravel = algo.travel;
                 minWay = resultTravel;
             }
         }
         return minWay;
+    }
+    public static ArrayList getLiTravel(){
+        return liTravel;
+    }
+    public static void main(String[] args) {
+        int[][] matrix = {{0, 44, 1, 53, 48},
+                        {94, 0, 41, 1, 44},
+                        {54, 44, 0, 111, 1},
+                        {1, 42, 46, 0, 1},
+                        {111, 1, 48, 45, 0}};
+        
+        StringBuilder sbb = getShortestWay(matrix, 5);
+        System.out.println(sbb.toString());
     }
 }
