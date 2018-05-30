@@ -28,6 +28,7 @@ import javax.swing.LayoutStyle;
 
 /**
  * Интерфейс для муравьиного алгоритма
+ *
  * @author Влад
  */
 public final class InterfaceFiltered extends javax.swing.JFrame {
@@ -37,9 +38,7 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
     private int[][] matrixValues;
     private StringBuilder way;
     private int[][] randomMatrix;
-    private boolean isDone;
-    
-    
+
     /**
      * Creates new form InterfaceFiltered
      */
@@ -59,9 +58,10 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
             }
         }
     }
-    
+
     /**
      * Обработчик события ввода значений, запрещает ввод не цифровых значений
+     *
      * @param evt событие ввода
      */
     public void keyTypedEvent(java.awt.event.KeyEvent evt) {
@@ -70,7 +70,7 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
             evt.consume();
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,9 +92,9 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
         doneLabel = new JLabel();
         expectedLabel = new JLabel();
         matrixPanel = new JPanel();
-        
-        for(int i =0;i<10;i++){
-            for(int j =0;j<10;j++){
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
                 tFieldArr[i][j] = new JTextField();
             }
         }
@@ -118,7 +118,7 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
             random100ButtonActionPerformed(evt);
         });
 
-        matrixBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5х5", "10х10" }));
+        matrixBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"5х5", "10х10"}));
         matrixBox.setSelectedIndex(1);
         matrixBox.setToolTipText("");
         matrixBox.setMinimumSize(new Dimension(65, 32));
@@ -145,27 +145,27 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
         GroupLayout functionalPanelLayout = new GroupLayout(functionalPanel);
         functionalPanel.setLayout(functionalPanelLayout);
         functionalPanelLayout.setHorizontalGroup(
-            functionalPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(functionalPanelLayout.createSequentialGroup()
-                .addComponent(chooseFileButton)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(randomNumber, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(random100Button)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(matrixBox, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(startButton, GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                .addContainerGap())
+                functionalPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(functionalPanelLayout.createSequentialGroup()
+                                .addComponent(chooseFileButton)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(randomNumber, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(random100Button)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(matrixBox, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(startButton, GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         functionalPanelLayout.setVerticalGroup(
-            functionalPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, functionalPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                .addComponent(random100Button, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                .addComponent(chooseFileButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                .addComponent(randomNumber, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                .addComponent(matrixBox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-                .addComponent(startButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+                functionalPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, functionalPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(random100Button, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chooseFileButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(randomNumber, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(matrixBox, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(startButton, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
         );
 
         resultPanel.setBackground(new Color(204, 204, 204));
@@ -193,34 +193,34 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
         GroupLayout resultPanelLayout = new GroupLayout(resultPanel);
         resultPanel.setLayout(resultPanelLayout);
         resultPanelLayout.setHorizontalGroup(
-            resultPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(resultPanelLayout.createSequentialGroup()
-                .addGroup(resultPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(expectedLabel, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addComponent(saveResultButton)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(doneLabel, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                    .addGroup(resultPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(resultLabel, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                resultPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(resultPanelLayout.createSequentialGroup()
+                                .addGroup(resultPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(expectedLabel, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                        .addGroup(GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
+                                                .addGap(146, 146, 146)
+                                                .addComponent(saveResultButton)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(doneLabel, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                                        .addGroup(resultPanelLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(resultLabel, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
         );
         resultPanelLayout.setVerticalGroup(
-            resultPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(resultLabel, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(expectedLabel, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(resultPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(saveResultButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(doneLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                resultPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, resultPanelLayout.createSequentialGroup()
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(resultLabel, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5)
+                                .addComponent(expectedLabel, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(resultPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(saveResultButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(doneLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
         );
 
         matrixPanel.setFocusable(false);
@@ -246,428 +246,429 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
                 tFieldArr[i][j].setPreferredSize(new Dimension(34, 24));
             }
         }
-        
 
         GroupLayout matrixPanelLayout = new GroupLayout(matrixPanel);
         matrixPanel.setLayout(matrixPanelLayout);
         matrixPanelLayout.setHorizontalGroup(
-            matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(matrixPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addComponent(tFieldArr[4][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tFieldArr[4][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tFieldArr[4][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addComponent(tFieldArr[5][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tFieldArr[5][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(tFieldArr[5][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addComponent(tFieldArr[4][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tFieldArr[4][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addComponent(tFieldArr[5][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(tFieldArr[5][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[0][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[0][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[0][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[0][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[0][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[1][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[1][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[1][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[1][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[1][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[2][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[2][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[2][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[2][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[2][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[8][0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[8][1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[8][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[8][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[8][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[3][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[3][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[3][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[3][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[3][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[6][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(tFieldArr[6][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[6][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(tFieldArr[6][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(tFieldArr[6][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[7][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[7][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[7][2], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[7][3], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[7][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[9][0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[9][1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[9][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[9][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[9][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(tFieldArr[3][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tFieldArr[6][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(tFieldArr[4][5], GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(tFieldArr[5][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
+                matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(tFieldArr[0][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[1][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[2][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addComponent(tFieldArr[4][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(tFieldArr[4][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(tFieldArr[4][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addComponent(tFieldArr[5][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(tFieldArr[5][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(12, 12, 12)
+                                                                .addComponent(tFieldArr[5][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+                                                .addGap(12, 12, 12)
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addComponent(tFieldArr[4][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(tFieldArr[4][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addComponent(tFieldArr[5][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(12, 12, 12)
+                                                                .addComponent(tFieldArr[5][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[0][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[0][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[0][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[0][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[0][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[1][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[1][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[1][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[1][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[1][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[2][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[2][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[2][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[2][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[2][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[8][0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[8][1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[8][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[8][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[8][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[3][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[3][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[3][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[3][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[3][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[6][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(12, 12, 12)
+                                                .addComponent(tFieldArr[6][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[6][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(12, 12, 12)
+                                                .addComponent(tFieldArr[6][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(12, 12, 12)
+                                                .addComponent(tFieldArr[6][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[7][0], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[7][1], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[7][2], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[7][3], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[7][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[9][0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[9][1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[9][2], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[9][3], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[9][4], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(tFieldArr[0][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[1][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[2][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[3][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[4][6], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[5][6], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[6][6], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(tFieldArr[0][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[1][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[2][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[3][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[4][7], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[5][7], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[6][7], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tFieldArr[7][7], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addComponent(tFieldArr[8][5], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tFieldArr[8][6], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tFieldArr[8][7], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(tFieldArr[0][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[1][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[2][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[3][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[4][8], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[5][8], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[6][8], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tFieldArr[7][8], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(tFieldArr[0][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[1][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[2][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[3][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[4][9], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[5][9], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[6][9], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(tFieldArr[7][9], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tFieldArr[8][8], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tFieldArr[8][9], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[7][5], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[7][6], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[9][5], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(tFieldArr[9][6], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[9][7], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[9][8], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tFieldArr[9][9], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                                        .addComponent(tFieldArr[3][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tFieldArr[6][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(tFieldArr[4][5], GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(tFieldArr[5][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(tFieldArr[0][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[1][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[2][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(tFieldArr[0][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[1][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[2][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[3][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[4][6], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[5][6], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[6][6], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(tFieldArr[0][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[1][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[2][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[3][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[4][7], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[5][7], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[6][7], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(tFieldArr[7][7], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addComponent(tFieldArr[8][5], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(tFieldArr[8][6], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(tFieldArr[8][7], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addGap(13, 13, 13)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(tFieldArr[0][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[1][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[2][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[3][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[4][8], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[5][8], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[6][8], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(tFieldArr[7][8], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                .addComponent(tFieldArr[0][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[1][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[2][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[3][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[4][9], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[5][9], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[6][9], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                        .addComponent(tFieldArr[7][9], GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(tFieldArr[8][8], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(tFieldArr[8][9], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[7][5], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[7][6], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addComponent(tFieldArr[9][5], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addGap(12, 12, 12)
+                                                .addComponent(tFieldArr[9][6], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[9][7], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[9][8], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(tFieldArr[9][9], GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(10, Short.MAX_VALUE))
         );
         matrixPanelLayout.setVerticalGroup(
-            matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.TRAILING, matrixPanelLayout.createSequentialGroup()
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addComponent(tFieldArr[0][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tFieldArr[1][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tFieldArr[2][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tFieldArr[3][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addComponent(tFieldArr[0][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[1][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[2][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[3][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tFieldArr[4][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[4][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tFieldArr[5][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[5][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[6][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addComponent(tFieldArr[0][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[1][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[2][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[3][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[4][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[5][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[6][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addComponent(tFieldArr[0][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[1][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[2][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[3][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[4][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[5][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFieldArr[6][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addGap(210, 210, 210)
+                matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, matrixPanelLayout.createSequentialGroup()
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(tFieldArr[7][7], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[7][9], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                                        .addGap(180, 180, 180)
-                                        .addComponent(tFieldArr[6][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                            .addComponent(tFieldArr[7][5], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(tFieldArr[7][6], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(GroupLayout.Alignment.TRAILING, matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addGroup(matrixPanelLayout.createSequentialGroup()
-                                            .addComponent(tFieldArr[0][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tFieldArr[1][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tFieldArr[2][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tFieldArr[3][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tFieldArr[4][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tFieldArr[5][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(tFieldArr[6][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(tFieldArr[0][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tFieldArr[1][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tFieldArr[2][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tFieldArr[3][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(matrixPanelLayout.createSequentialGroup()
-                                            .addGap(210, 210, 210)
-                                            .addComponent(tFieldArr[7][8], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(tFieldArr[8][5], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tFieldArr[8][6], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[8][7], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[8][8], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[8][9], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(tFieldArr[9][9], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[9][7], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[9][5], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[9][6], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[9][8], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(tFieldArr[0][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[0][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[0][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[0][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[0][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(tFieldArr[1][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[1][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[1][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[1][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[1][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(tFieldArr[2][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[2][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[2][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[2][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[2][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(tFieldArr[3][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[3][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[3][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[3][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFieldArr[3][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(matrixPanelLayout.createSequentialGroup()
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addGap(120, 120, 120)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tFieldArr[4][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[4][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[4][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[4][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[4][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tFieldArr[5][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[5][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[5][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[5][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tFieldArr[5][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(matrixPanelLayout.createSequentialGroup()
-                                .addGap(180, 180, 180)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tFieldArr[6][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[6][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tFieldArr[6][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[6][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[6][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tFieldArr[7][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[7][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[7][2], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tFieldArr[7][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[7][3], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                    .addComponent(tFieldArr[8][0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(tFieldArr[8][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[8][1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[8][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tFieldArr[8][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(tFieldArr[9][0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                .addComponent(tFieldArr[9][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tFieldArr[9][1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tFieldArr[9][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
-                                .addComponent(tFieldArr[9][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))))))
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addComponent(tFieldArr[0][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[1][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[2][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[3][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(tFieldArr[4][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[4][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(tFieldArr[5][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[5][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[6][6], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addComponent(tFieldArr[0][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[1][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[2][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[3][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[4][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[5][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[6][7], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addComponent(tFieldArr[0][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[1][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[2][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[3][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[4][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[5][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(tFieldArr[6][9], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addGap(210, 210, 210)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(tFieldArr[7][7], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[7][9], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                                .addGap(180, 180, 180)
+                                                                                .addComponent(tFieldArr[6][5], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                        .addComponent(tFieldArr[7][5], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addComponent(tFieldArr[7][6], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
+                                                                        .addGroup(GroupLayout.Alignment.TRAILING, matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                                .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                                        .addComponent(tFieldArr[0][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(tFieldArr[1][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(tFieldArr[2][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(tFieldArr[3][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(tFieldArr[4][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(tFieldArr[5][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                                        .addComponent(tFieldArr[6][8], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                                .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                                        .addGap(210, 210, 210)
+                                                                                        .addComponent(tFieldArr[7][8], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(tFieldArr[8][5], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                .addComponent(tFieldArr[8][6], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[8][7], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[8][8], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[8][9], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(tFieldArr[9][9], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[9][7], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[9][5], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[9][6], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[9][8], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(tFieldArr[0][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[0][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[0][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[0][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[0][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(tFieldArr[1][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[1][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[1][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[1][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[1][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(tFieldArr[2][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[2][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[2][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[2][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[2][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(tFieldArr[3][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[3][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[3][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[3][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(tFieldArr[3][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addGap(120, 120, 120)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(tFieldArr[4][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[4][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[4][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[4][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[4][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                        .addComponent(tFieldArr[5][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[5][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[5][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[5][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(tFieldArr[5][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
+                                                        .addGroup(matrixPanelLayout.createSequentialGroup()
+                                                                .addGap(180, 180, 180)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                .addComponent(tFieldArr[6][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[6][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                .addComponent(tFieldArr[6][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[6][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[6][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                .addComponent(tFieldArr[7][0], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[7][1], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[7][2], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                .addComponent(tFieldArr[7][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[7][3], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(tFieldArr[8][0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                                .addComponent(tFieldArr[8][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[8][1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[8][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                                .addComponent(tFieldArr[8][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)))))
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(tFieldArr[9][0], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(matrixPanelLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                                                .addComponent(tFieldArr[9][2], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tFieldArr[9][1], GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tFieldArr[9][3], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tFieldArr[9][4], GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))))))
         );
 
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(functionalPanel, GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-            .addComponent(matrixPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-            .addComponent(resultPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(functionalPanel, GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                        .addComponent(matrixPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(resultPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(functionalPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(matrixPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(resultPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(functionalPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(matrixPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                                .addComponent(resultPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>                        
+
     /**
      * Считывает матрицу с файла и вызывает алгоритм
+     *
      * @param evt событие
      */
-    private void chooseFileButtonActionPerformed(ActionEvent evt) {                                                 
+    private void chooseFileButtonActionPerformed(ActionEvent evt) {
         saveResultButton.setEnabled(false);
         expectedLabel.setVisible(false);
         int[][] matrix;
         int elementsTaken = 0;
         int size;
         JFileChooser fileOpener = new JFileChooser();
-        
+
         int openFileResult = fileOpener.showDialog(null, "Открыть файл");
-        
+
         if (openFileResult == JFileChooser.APPROVE_OPTION) {
             File file = fileOpener.getSelectedFile();
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -708,9 +709,9 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
                 resultLabel.setText(ex.getMessage());
             }
         }
-    }                                                
+    }
 
-    private void random100ButtonActionPerformed(ActionEvent evt) {                                                
+    private void random100ButtonActionPerformed(ActionEvent evt) {
         try {
             doneLabel.setText("");
             expectedLabel.setText("");
@@ -753,37 +754,22 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
                     }
                 }
             }
-//            System.out.println(expectedWay.toString());
             way = Algorithm.getShortestWay(randomMatrix, inSize);
-//            System.out.println(way.toString());
-            isDone = true;
-//            
-//            ArrayList<Integer> listTravel = Algorithm.getLiTravel();
-//            for (int i = 0; i < listTravel.size(); i++) {
-//                if (i == listTravel.size() - 1) {
-//                    randomMatrix[listTravel.get(i)][listTravel.get(0)] = 1;
-//                } else {
-//                    randomMatrix[listTravel.get(i)][listTravel.get(i + 1)] = 1;
-//                }
-//            }ssss
-
-
-
-
             matrixValues = randomMatrix;
-//            way = Algorithm.getShortestWay(matrixValues, inSize);
             resultLabel.setText(expectedWay.toString());
             expectedLabel.setText(way.toString());
             saveResultButton.setEnabled(true);
         } catch (Exception e) {
             resultLabel.setText(e.getMessage());
         }
-    }                                               
+    }
+
     /**
      * Оставляет видимыми выбранные поля
-     * @param evt 
+     *
+     * @param evt
      */
-    private void matrixBoxItemStateChanged(java.awt.event.ItemEvent evt) {                                           
+    private void matrixBoxItemStateChanged(java.awt.event.ItemEvent evt) {
         if (checkBoxFlag == true) {
             if (matrixBox.getSelectedIndex() == 0) {
                 for (int r = 0; r < 10; r++) {
@@ -814,9 +800,9 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
             setSize(new Dimension(this.getWidth() - 1, this.getHeight() - 1));
         }
         checkBoxFlag = checkBoxFlag != true;
-    }                                          
+    }
 
-    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             expectedLabel.setVisible(false);
             doneLabel.setText("");
@@ -828,24 +814,28 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
         } catch (Exception e) {
             resultLabel.setText(e.getMessage());
         }
-    }                                           
+    }
 
-    private void fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {                                     
+    private void fieldNumberKeyTyped(java.awt.event.KeyEvent evt) {
         keyTypedEvent(evt);
-    }                                    
+    }
+
     /**
      * Сохраняет результат работы алгоритма в отдельный файл
-     * @param evt 
+     *
+     * @param evt
      */
-    private void saveResultButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void saveResultButtonActionPerformed(java.awt.event.ActionEvent evt) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy' 'hh-mm-ss a");
         Date date = new Date();
         String currentDate = dateFormat.format(date);
         saveWayToFile(currentDate);
         saveMatrixToFile(currentDate);
-    }                                                
+    }
+
     /**
      * Сохраняет матрицу в файл
+     *
      * @param currentDate текущая дата
      */
     private void saveMatrixToFile(String currentDate) {
@@ -861,8 +851,10 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
             doneLabel.setText("Произошла ошибка =(");
         }
     }
+
     /**
      * Сохраняет путь в файл
+     *
      * @param currentDate текущая дата
      */
     private void saveWayToFile(String currentDate) {
@@ -873,11 +865,13 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
             doneLabel.setText("Произошла ошибка =(");
         }
     }
-   
+
     /**
      * Заполняет массив tFieldArr значениями с полей ввода и вызывает алгоритм
+     *
      * @param rowscols размерность матрицы
-     * @throws NumberFormatException если не удастся преобразовать String в Integer
+     * @throws NumberFormatException если не удастся преобразовать String в
+     * Integer
      */
     public void runAlgorithm(int rowscols) {
         int[][] matrix = new int[rowscols][rowscols];
@@ -935,9 +929,9 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
                 new InterfaceFiltered().setVisible(true);
             }
         });
-        
+
     }
-    
+
     // Variables declaration - do not modify                     
     private javax.swing.JButton chooseFileButton;
     private javax.swing.JLabel doneLabel;
@@ -953,4 +947,3 @@ public final class InterfaceFiltered extends javax.swing.JFrame {
     private javax.swing.JButton startButton;
     // End of variables declaration                   
 }
-

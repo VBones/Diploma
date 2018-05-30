@@ -20,32 +20,13 @@ public class Algorithm {
     private double[][] roadPheromone;
     private double[][] probabilities;
     private double[] sumProbability;
-    private boolean[] visitedCities;
+    public boolean[] visitedCities;
     private ArrayList<Integer> travel;
     private int lengthOfWay;
-    private static ArrayList<Integer> liTravel;
-
+    private static ArrayList<Integer> listTravel;
 
     /**
-     *
-     * 1) РЕФАКТОРИТЬ КОД
-     * 2) Поправить интерфейс
-     * 3) Добавить сохранение матрицы в файл(Готово)
-     * 4) Вывод ошибок(Готово)
-     * 5) Создавать новый файл с датой(Готово)
-     * 6) Перелопатить ввод с файла(Готово)
-     * 7) Сделать не симметричную матрицу(Готово)
-     * 8) Сделать рандом - выбрать путь с единицами, и при каждой генерации просто менять
-     *    места с единицами, чтобы длина путя была всегда одна и та же как и путь.(Готово)
-     * 9) Сделать поле с выбором размерности рандомной матрицы
-     * 10) Большие числа рандомной матрицы должны быть одинаковы всегда, то-есть предопределены.(Готово)
-     * 11) Сначала заполнять рандомными кабанами матрицу а потом просто единички поставить в места,
-     *     предопределенные по пути(Готово)
-     * 12) Смещение единичек в рандомной матрице
-     */
-    
-    /**
-     * Initializing array of visited cities with false value, length of way. 
+     * Initializing array of visited cities with false value, length of way.
      */
     public void initialization() {
         for (int i = 0; i < visitedCities.length; i++) {
@@ -57,7 +38,7 @@ public class Algorithm {
     /**
      * Метод расчитывает вероятность попасть в каждый из городов
      *
-     * @param currentCity текущий город 
+     * @param currentCity текущий город
      */
     public void getProbabilityForCity(int currentCity) {
         for (int j = 0; j < CITIES; j++) {
@@ -74,7 +55,7 @@ public class Algorithm {
      * Выбирается следующий город для посещения
      *
      * @param currentCity текущий город, отсчет с нуля
-     * @return возвращает номер города, отсчет с нуля 
+     * @return возвращает номер города, отсчет с нуля
      */
     public int chooseCity(int currentCity) {
         ArrayList<Double> probabsForChoose = new ArrayList<>();
@@ -117,8 +98,9 @@ public class Algorithm {
     }
 
     /**
-     * Updating sums of probabilities to go to another unvisited city
-     * Use after updating pheromones
+     * Updating sums of probabilities to go to another unvisited city Use after
+     * updating pheromones
+     *
      * @param currentCity текущий город
      */
     public void updateSumProbability(int currentCity) {
@@ -134,9 +116,10 @@ public class Algorithm {
             }
         }
     }
-    
+
     /**
      * Запускает полный цикл алгоритма по поиску города и обновлению феромонов
+     *
      * @param startingCity начальный город
      */
     public void runAlgorithm(int startingCity) {
@@ -144,7 +127,7 @@ public class Algorithm {
         int selectedCity = startingCity;
         travel = new ArrayList<>();
         travel.add(startingCity);
-        
+
         while (hasMoreCitiesToGo()) {
             updateSumProbability(selectedCity);
             getProbabilityForCity(selectedCity);
@@ -154,10 +137,10 @@ public class Algorithm {
             }
             travel.add(selectedCity);
         }
-        getCompletedLength(travel.get(0), travel.get(travel.size() - 1));
+        setCompletedLength(travel.get(0), travel.get(travel.size() - 1));
         updatePheromones();
     }
-    
+
     /**
      * Обновляет значения феромонов
      */
@@ -180,18 +163,20 @@ public class Algorithm {
             }
         }
     }
-    
+
     /**
-     * Получаем длинну полного путя муравья. В будущем удалить метод, причина: быдло-код.
+     * Назначаем длинну полного пути муравья.
+     *
      * @param firstCity первый город
      * @param lastCity последний город
      */
-    public void getCompletedLength(int firstCity, int lastCity) {
+    public void setCompletedLength(int firstCity, int lastCity) {
         lengthOfWay += roadLength[lastCity][firstCity];
     }
-    
+
     /**
      * Проверяем, остались ли еще непосещенные города
+     *
      * @return true или false
      */
     public boolean hasMoreCitiesToGo() {
@@ -202,15 +187,22 @@ public class Algorithm {
         }
         return false;
     }
-    
-    public void inputMatrix(int[][] inputs, int size) {
+
+    /**
+     * Создаеются массивы длин и феромонов на основании введенной матрицы Массив
+     * феромонов заполняется случайными значениями от 1 до 3
+     *
+     * @param matrix заданная матрица
+     * @param size размерность матрицы
+     */
+    public void inputMatrix(int[][] matrix, int size) {
         CITIES = size;
         Random rnd = new Random();
         roadLength = new int[size][size];
         roadPheromone = new double[size][size];
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
-                roadLength[r][c] = inputs[r][c];
+                roadLength[r][c] = matrix[r][c];
             }
         }
         for (int i = 0; i < size; i++) {
@@ -218,14 +210,7 @@ public class Algorithm {
                 roadPheromone[i][j] = rnd.nextInt(2) + 1;
             }
         }
-//        for (int i = 0; i < size-1; i++) {
-//            for (int j = i + 1; j < size; j++) {
-//                roadPheromone[i][j] = rnd.nextInt(2) + 1;
-//                roadPheromone[j][i] = roadPheromone[i][j];
-//            }
-//        }
     }
-    
 
     public Algorithm(int cities) {
         CITIES = cities;
@@ -233,8 +218,10 @@ public class Algorithm {
         visitedCities = new boolean[CITIES];
         probabilities = new double[CITIES][CITIES];
     }
+
     /**
      * Находит кратчайший путь
+     *
      * @param input введенная матрица
      * @param size размерность матрицы
      * @return кратчайший путь
@@ -244,7 +231,7 @@ public class Algorithm {
         StringBuilder resultTravel;
         StringBuilder minWay = new StringBuilder();
         int minWayLength = Integer.MAX_VALUE;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             algo = new Algorithm(size);
             algo.inputMatrix(input, size);
             for (int j = 0; j < TIME; j++) {
@@ -253,28 +240,19 @@ public class Algorithm {
             resultTravel = new StringBuilder();
             resultTravel.append("Длина пути: ").append(algo.lengthOfWay).append(" | Путь:");
             for (Integer city : algo.travel) {
-                resultTravel.append(" -> ").append(city+1);
+                resultTravel.append(" -> ").append(city + 1);
             }
-            resultTravel.append(" -> ").append(algo.travel.get(0)+1);
+            resultTravel.append(" -> ").append(algo.travel.get(0) + 1);
             if (algo.lengthOfWay < minWayLength) {
                 minWayLength = algo.lengthOfWay;
-                liTravel = algo.travel;
+                listTravel = algo.travel;
                 minWay = resultTravel;
             }
         }
         return minWay;
     }
-    public static ArrayList getLiTravel(){
-        return liTravel;
-    }
-    public static void main(String[] args) {
-        int[][] matrix = {{0, 44, 1, 53, 48},
-                        {94, 0, 41, 1, 44},
-                        {54, 44, 0, 111, 1},
-                        {1, 42, 46, 0, 1},
-                        {111, 1, 48, 45, 0}};
-        
-        StringBuilder sbb = getShortestWay(matrix, 5);
-        System.out.println(sbb.toString());
+
+    public static ArrayList getListTravel() {
+        return listTravel;
     }
 }
