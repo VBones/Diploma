@@ -39,7 +39,7 @@ public class AlgorithmTest {
     public void testHasMoreCitiesToGo() {
         System.out.println("hasMoreCitiesToGo");
         Algorithm instance = new Algorithm(5);
-        instance.initialization();
+        instance.initializeVisitedCities();
         instance.visitedCities[0] = true;
         instance.visitedCities[1] = true;
         instance.visitedCities[2] = true;
