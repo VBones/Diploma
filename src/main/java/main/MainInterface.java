@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -31,6 +32,19 @@ import javax.swing.LayoutStyle;
  */
 public final class MainInterface extends javax.swing.JFrame {
 
+    private JButton chooseFileButton;
+    private JLabel doneLabel;
+    private JLabel expectedLabel;
+    private JPanel functionalPanel;
+    private JComboBox<String> matrixBox;
+    private JPanel matrixPanel;
+    private JButton random100Button;
+    private JTextField randomNumber;
+    private JLabel resultLabel;
+    private JPanel resultPanel;
+    private JButton saveResultButton;
+    private JButton startButton;
+    
     private boolean checkBoxFlag = false;
     final JTextField[][] tFieldArr = new JTextField[10][10];
     int[][] matrixValues;
@@ -38,7 +52,7 @@ public final class MainInterface extends javax.swing.JFrame {
     protected int[][] randomMatrix;
 
     /**
-     * Creates new form InterfaceFiltered
+     * Создает новую форму интерфейса
      */
     public MainInterface() {
         setLocationRelativeTo(null);
@@ -49,7 +63,6 @@ public final class MainInterface extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
         functionalPanel = new JPanel();
         chooseFileButton = new JButton();
         random100Button = new JButton();
@@ -663,10 +676,12 @@ public final class MainInterface extends javax.swing.JFrame {
             }
         }
     }
+
     /**
-     * Создает матрицу указанной размерности, случайно заполняет её, и генерирует
-     * кратчайший путь для неё.
-     * @param evt 
+     * Создает матрицу указанной размерности, случайно заполняет её, и
+     * генерирует кратчайший путь для неё.
+     *
+     * @param evt
      */
     private void randomButtonActionPerformed(ActionEvent evt) {
         try {
@@ -768,7 +783,6 @@ public final class MainInterface extends javax.swing.JFrame {
         FileAction.saveMatrixToFile(currentDate, matrixValues, doneLabel);
     }
 
-
     /**
      * Заполняет массив tFieldArr значениями с полей ввода и вызывает алгоритм
      *
@@ -803,11 +817,6 @@ public final class MainInterface extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -824,32 +833,17 @@ public final class MainInterface extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MainInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        /* Создание и отображение формы */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainInterface().setVisible(true);
+                MainInterface antinterface = new MainInterface();
+                ImageIcon icon = new ImageIcon(getClass().getResource("/res/ant-icon.png"));
+                antinterface.setIconImage(icon.getImage());
+                antinterface.setTitle("Ant Algorithm");
+                antinterface.setVisible(true);
             }
         });
 
     }
-
-    // Variables declaration - do not modify                     
-    private JButton chooseFileButton;
-    private JLabel doneLabel;
-    private JLabel expectedLabel;
-    private JPanel functionalPanel;
-    private JComboBox<String> matrixBox;
-    private JPanel matrixPanel;
-    private JButton random100Button;
-    private JTextField randomNumber;
-    private JLabel resultLabel;
-    private JPanel resultPanel;
-    private JButton saveResultButton;
-    private JButton startButton;
-    // End of variables declaration                   
 }

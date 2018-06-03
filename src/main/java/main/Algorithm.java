@@ -17,7 +17,7 @@ public class Algorithm {
     private static final double Q = 300;//коэфициент для нахождения феромона нового
     private static final int TIME = 200;
     private static int CITIES;
-
+    
     private int[][] roadLength;
     private double[][] roadPheromone;
     private double[][] probabilities;
@@ -92,6 +92,7 @@ public class Algorithm {
     }
 
     /**
+     * Инциализирует массив посещенных городов 'false' значениями, а также длину пути
      * Initializing array of visited cities with false value, length of way.
      */
     public void initializeVisitedCities() {
@@ -116,8 +117,7 @@ public class Algorithm {
     }
 
     /**
-     * Updating sums of probabilities to go to another unvisited city Use after
-     * updating pheromones
+     * Обновляет массив с сумарными вероятностями пойти в другой непосещенный город
      *
      * @param currentCity текущий город
      */
