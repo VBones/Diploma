@@ -44,7 +44,7 @@ public final class MainInterface extends javax.swing.JFrame {
     private JPanel resultPanel;
     private JButton saveResultButton;
     private JButton startButton;
-    
+
     private boolean checkBoxFlag = false;
     final JTextField[][] tFieldArr = new JTextField[10][10];
     int[][] matrixValues;

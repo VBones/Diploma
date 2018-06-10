@@ -5,7 +5,7 @@ import javax.swing.JTextField;
 
 /**
  * Содержит методы, которые устанавливают правила для ввода матрицы
- * 
+ *
  * @author Влад Сморода
  */
 class InputRule {
